@@ -1,6 +1,23 @@
-# Getting Started with Create React App
+# ReactMaterialUIShowcase
+
+This Single Page React Application (SPA) written in Typescript uses the open-source Material UI component library (https://mui.com/material-ui) that implements Google's Material Design (https://m2.material.io/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+See below for screen shots.
+
+**Logon with:** any email address and password.
+
+**Important:** Some pages contain information sections that describes the functionality available on that particular screen.
+<br>
+<img src="NotesForFunctionality.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+
+## Charts
+
+The charts on the Analytics and Sales pages have been developed using the following libraries:
+
+- <b>Sales page</b>: Material UI Charts (https://mui.com/x/react-charts/).
+- <b>Analytics page</b>: Recharts (https://recharts.org/en-US/).
 
 ## API Mocking
 
@@ -13,23 +30,6 @@ Structure FakeRest data https://codesandbox.io/p/sandbox/github/okami101/vuetify
 Instead of the browser fetch for gets, posts and deletes, this demo uses Axios that is a promise based HTTP client for the browser and node.js. See https://www.npmjs.com/package/axios for more information.
 
 Using @faker-js to produce random mock data https://fakerjs.dev/guide/usage.html
-
-## User Interface
-
-The application uses the open-source Material UI component library (https://mui.com/material-ui) that implements Google's Material Design (https://m2.material.io/).
-
-See below for screen shots.
-
-**Important:** Some pages contain information sections that describes the functionality available on that particular screen.
-<br>
-<img src="NotesForFunctionality.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
-
-## Charts
-
-The charts on the Analytics and Sales pages have been developed using the following libraries:
-
-- <b>Sales page</b>: Material UI Charts (https://mui.com/x/react-charts/).
-- <b>Analytics page</b>: Recharts (https://recharts.org/en-US/).
 
 ## Screen shots
 
