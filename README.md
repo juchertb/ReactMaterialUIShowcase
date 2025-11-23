@@ -50,6 +50,57 @@ Using @faker-js to produce random mock data https://fakerjs.dev/guide/usage.html
 <img src="Settings.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
 <img src="AnalyticsDarkMode.jpeg" width="500px"style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
 
+## Make the production build
+
+Build the release version of the application by running
+
+#### `npm run build`
+
+Then test the application by executing
+
+#### `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process`
+
+and
+
+#### `server -s build`
+
+Or open the command prompt (not powershell) and execute the preceeding command. THis bypasses the Powershell policy issue.
+
+## Setup and Configure gh-pages
+
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+https://dev.to/scc33/deploying-to-github-pages-using-gh-pages-2d95
+
+Download the gh-pages package : you can use your favorite node package manager for this step. This module requires Git >= 1.9 and Node > 14.
+
+#### `npm install gh-pages --save-dev`
+
+Update your package.json scripts : add a predeploy and deploy script. The predeploy setup handles building the static content. The predeploy script will automatically run when the deploy script runs.
+
+#### `"scripts": {`
+
+#### `"predeploy": "npm run build",`
+
+#### `"deploy": "gh-pages -d build",`
+
+#### `}`
+
+Push the app to the GitHub repository : once again you can use your favorite package manager tool.
+`
+
+#### `npm run deploy`
+
+Check the GitHub repo to make sure the code was pushed to remote : gh-pages should have pushed the code to a branch named gh-pages.
+
+## Configure GitHub Pages
+
+Navigate to the GitHub Pages on the GitHub repository site
+
+Configure the Build and deployment settings.
+
+<img src="GithubPages.jpeg" width="500px" style="margin-bottom:10px;vertical-align: top;">
+
 ## Available Scripts
 
 In the project directory, you can run:

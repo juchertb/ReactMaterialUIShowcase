@@ -22,3 +22,9 @@ Todos::
 19. [DONE] Work on light/dark function.
 20. [DONE] Work on messages (click button at top.). Implement the same way as in the Otis template.
 21. Go through all pages and make them fully responsive
+22. When the application is published then the products and orders data is not served.
+23. Change the sire icon to the alsacom icon
+24. I get an overlay with an error of type "Cannot read properties of undefined (reading 'url')" on the logon screen when first starting the server (npm run start).
+
+
+  "homepage": "https://juchertb.github.io/ReactMaterialUIShowcase",
