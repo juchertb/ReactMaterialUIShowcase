@@ -2,37 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Todos
-
-<input type="checkbox" checked> <del>Example with formatting:: @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported. Readme.md file how tos: [https://www.geeksforgeeks.org/what-is-readme-md-file/].</del> \
-<input type="checkbox" checked> <del>Add phone validation. It should already be there with input type phone.</del> \
- <input type="checkbox"> Research how to save individual options on the settings page. Like switch settings. How is this done in React applications? \
- <input type="checkbox" checked> <del>Work on other portions of the setup page.</del> \
-<input type="checkbox" checked> <del>Make Link arrows in Settings.Sessions section similar to the `Otis template` at [https://mui.com/store/previews/otis-admin-pro-material-dashboard-react/].</del> \
-<input type="checkbox" checked> <del>Anchor is not working in setting page from menu so sections.</del> \
-<input type="checkbox" checked> <del>Format Drawer menu like the one in the Otis template.</del> \
-<input type="checkbox"> Add show/hide function for navigation menu like on the Otis template. \
-<input type="checkbox" checked> <del>Add MUI confirmation dialog before deleting orders.</del> \
-<input type="checkbox"> Currently orders are cached with useState. Are they also cached in teh datagrid? I don't see example on the MUI site where the also cache in useState. \
-<input type="checkbox"> I am getting a 404 resource not found error when trying to save a new order in the orders table when the id is a uuid with dashes. Why do I have to remove teh dashes from the uuid? \
-<input type="checkbox" checked> <del>Images are missing from the analytics and sales page after playing wiht the MSW and FakeRest.</del> \
-<input type="checkbox" checked> <del>[valueGetter on date field works "valueGetter: (value) => value && new Date(value)") In the products page when I scroll to the right I get an error on dateCreated, when the column is defined as "Date". Same for the other date columns in products.js</del> \
-<input type="checkbox"> Implement product details and browser pages from pages/eCommerce/Products \
-<input type="checkbox" checked> <del>when hitting https://localhost:3000 it should bring you to the analytics page or the logon page. Right now a blank page is displayed.</del> \
-<input type="checkbox" checked> <del>Color scheme icon in top right corner moves to the right when I click it. It also disappears when I scroll down on the profile page</del> \
-<input type="checkbox"> FormGrid styled Grid2 is not working under components/StyleComponents. The components disapear in Accounts section for example under the settings page. \
-<input type="checkbox" checked> <del>Navigation menu: submenu closes automatically when I click an item.</del> \
-<input type="checkbox" checked> <del>Work on light/dark function.</del> \
-<input type="checkbox" checked> <del>Work on messages (click button at top.). Implement the same way as in the Otis template.</del> \
-<input type="checkbox">Go through all pages and make them fully responsive
-
 ## API Mocking
 
 Uses FakeRest and Mock Service Worker (MSW). MSW is an API mocking library for browser and Node.js (https://mswjs.io/docs). FakeRest is a browser library that intercepts AJAX calls to mock a REST server based on JSON data. https://github.com/marmelab/FakeRest.
 
-Structure FakeRest data https://codesandbox.io/p/sandbox/github/okami101/vuetify-admin/tree/master/examples/demo-retail?file=%2Fsrc%2Fviews%2FDashboard.vue
+Because of this, records in the eCommerce\Products, eCommerce\Orders pages and others, can be created, updated and deleted within the current session.
 
-Nice FakeRest demo at https://marmelab.com/react-admin-demo
+Structure FakeRest data https://codesandbox.io/p/sandbox/github/okami101/vuetify-admin/tree/master/examples/demo-retail?file=%2Fsrc%2Fviews%2FDashboard.vue
 
 Instead of the browser fetch for gets, posts and deletes, this demo uses Axios that is a promise based HTTP client for the browser and node.js. See https://www.npmjs.com/package/axios for more information.
 
@@ -42,12 +18,37 @@ Using @faker-js to produce random mock data https://fakerjs.dev/guide/usage.html
 
 The application uses the open-source Material UI component library (https://mui.com/material-ui) that implements Google's Material Design (https://m2.material.io/).
 
+See below for screen shots.
+
+**Important:** Some pages contain information sections that describes the functionality available on that particular screen.
+<br>
+<img src="NotesForFunctionality.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+
 ## Charts
 
 The charts on the Analytics and Sales pages have been developed using the following libraries:
 
 - <b>Sales page</b>: Material UI Charts (https://mui.com/x/react-charts/).
 - <b>Analytics page</b>: Recharts (https://recharts.org/en-US/).
+
+## Screen shots
+
+<img src="Sign-in.jpeg" width="300px" style="margin-top:10px;margin-bottom:10px; vertical-align: top;margin-right: 50px">
+<br>
+<img src="Analytics.jpeg" width="500px"style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="Sales.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="HostingServices.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="Functions.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<br>
+<img src="Products.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="Product.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="Orders.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="Order.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="OrderHistory.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<br>
+<img src="MyProfile.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="Settings.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="AnalyticsDarkMode.jpeg" width="500px"style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
 
 ## Available Scripts
 
