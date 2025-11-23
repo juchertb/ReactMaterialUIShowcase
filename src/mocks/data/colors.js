@@ -1,0 +1,15 @@
+export default () => [
+  { id: 0, name: "Red" },
+  { id: 1, name: "Blue" },
+  { id: 2, name: "Green" },
+  { id: 3, name: "Yellow" },
+  { id: 4, name: "Black" },
+  { id: 5, name: "White" },
+  { id: 6, name: "Sand" },
+  { id: 7, name: "Grey" },
+  { id: 8, name: "Purple" },
+  { id: 9, name: "Pink" },
+  { id: 10, name: "Braun" },
+  { id: 11, name: "Orange" },
+  { id: 12, name: "Navy blue" },
+];
