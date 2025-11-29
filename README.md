@@ -2,13 +2,15 @@
 
 This Single Page React Application (SPA) written in Typescript uses the open-source Material UI component library (https://mui.com/material-ui) that implements Google's Material Design (https://m2.material.io/).
 
+A demo version of the application is available at https://juchertb.github.io/ReactMaterialUIShowcase
+
+**Logon with:** any email address and password.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 See below for screen shots.
 
-**Logon with:** any email address and password.
-
-**Important:** Some pages contain information sections that describes the functionality available on that particular screen.
+**Important:** Some pages contain information sections at the top that describes the functionality available on that particular screen.
 <br>
 <img src="NotesForFunctionality.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
 
@@ -23,7 +25,7 @@ The charts on the Analytics and Sales pages have been developed using the follow
 
 Uses FakeRest and Mock Service Worker (MSW). MSW is an API mocking library for browser and Node.js (https://mswjs.io/docs). FakeRest is a browser library that intercepts AJAX calls to mock a REST server based on JSON data. https://github.com/marmelab/FakeRest.
 
-Because of this, records in the eCommerce\Products, eCommerce\Orders pages and others, can be created, updated and deleted within the current session.
+Because of this, records in the eCommerce\Products, eCommerce\Orders pages and others, can be created, updated and deleted within the current session without an actual API.
 
 Structure FakeRest data https://codesandbox.io/p/sandbox/github/okami101/vuetify-admin/tree/master/examples/demo-retail?file=%2Fsrc%2Fviews%2FDashboard.vue
 
@@ -64,7 +66,7 @@ and
 
 #### `server -s build`
 
-Or open the command prompt (not powershell) and execute the preceeding command. THis bypasses the Powershell policy issue.
+Or open the command prompt (not powershell) and execute the preceeding command. This bypasses the Powershell policy issue.
 
 ## Setup and Configure gh-pages
 
