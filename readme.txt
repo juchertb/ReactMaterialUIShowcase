@@ -27,4 +27,18 @@ Todos::
 24. I get an overlay with an error of type "Cannot read properties of undefined (reading 'url')" on the logon screen when first starting the server (npm run start).
 
 
+For some reason I need this in the package.json otherwise I get page not found on github.io
   "homepage": "https://juchertb.github.io/ReactMaterialUIShowcase",
+
+  Not sure why it works for ReactAdminShowcase and BookStore.
+
+  I need to remove these settings when running the development version.
+
+  At the same time I also need this in index.js
+            <BrowserRouter basename="/ReactMaterialUIShowcase">
+
+
+Even with the changes I made to the ApiHost I am still getting a 404 page not found after publishing the site when trying to access products or orders 
+404 on https://juchertb.github.io/ReactMaterialUIShowcase/api/products?range=[0,11]
+
+Maybe it is not trapping the requests in fakeserver.js
