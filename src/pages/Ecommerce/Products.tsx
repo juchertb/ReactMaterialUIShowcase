@@ -37,7 +37,6 @@ const Products = (props) => {
         (response.status === 200 || response.status === 206) ? setRows(response.data) : setError(response.statusText);
         // If FakeRest returns total count in a header (like Content-Range)
         const contentRange = response.headers['content-range'];
-        console.log(contentRange);
         if (contentRange) {
           // Example: "products 0-11/42"
           const totalCount = parseInt(contentRange.split('/')[1], 10);
@@ -47,7 +46,6 @@ const Products = (props) => {
           setTotalPages(1);
         }
         setLoading(false);
-        console.log(response.data);
       })
       .catch(function (error) {
         setError(error);
@@ -79,7 +77,6 @@ const Products = (props) => {
           if (response.status !== 200) {
             throw new Error('Network response was not ok (status: ' + response.status + ')');
           }
-          return response.data;
         })
         .then(() => {
           setRows(rows.filter((row) => row.id !== deleteRowId));

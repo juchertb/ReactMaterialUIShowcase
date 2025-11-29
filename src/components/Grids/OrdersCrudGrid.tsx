@@ -135,7 +135,6 @@ export default function OrdersCrudGrid() {
       .then(function (response) {
         response.status === 200 ? setRows(response.data) : setError(response.statusText);
         setLoading(false);
-        console.log(response.data);
       })
       .catch(function (error) {
         setError(error);

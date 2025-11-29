@@ -106,21 +106,21 @@ const rentalProperties: RentalProperty[] = [
     title: "Cozy 5 Stars Apartment",
     price: 899,
     location: "Barcelona, Spain",
-    image: "Rental1.jpg",
+    image: "rental1.jpg",
     description: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to 'Naviglio' where you can enjoy the main night life in Barcelona.",
   },
   {
     title: "Office Studio",
     price: 1119,
     location: "London, UK",
-    image: "Rental2.jpg",
+    image: "rental2.jpg",
     description: "The place is close to Metro Station and bus stop just 2 min by walk and near to 'Naviglio' where you can enjoy the night life in London, UK.",
   },
   {
     title: "Beautiful Castle",
     price: 459,
     location: "Milan, Italy",
-    image: "Rental3.jpg",
+    image: "rental3.jpg",
     description: "The place is close to Metro Station and bus stop just 2 min by walk and near to 'Naviglio' where you can enjoy the main night life in Milan.",
   }
 ];

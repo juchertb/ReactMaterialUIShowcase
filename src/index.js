@@ -22,10 +22,13 @@ import { Box, CssBaseline } from "@mui/material";
 import ColorModeIconDropdown from "./theme/ColorModelIconDropdown";
 import { LayoutProvider } from "./context/LayoutContext";
 
+const basename =
+  process.env.NODE_ENV === "production" ? "/ReactMaterialUIShowcase" : "/";
+
 async function enableMocking() {
-  if (process.env.NODE_ENV !== "development") {
-    return;
-  }
+  // if (process.env.NODE_ENV !== "development") {
+  //   return;
+  // }
 
   /*
    *
@@ -47,6 +50,11 @@ async function enableMocking() {
   return worker.start({
     quiet: false, // Instruct MSW to not log requests in the console
     onUnhandledRequest: "bypass", // Instruct MSW to ignore requests we don't handle
+    serviceWorker: {
+      // This is useful if your application follows
+      // a strict directory structure.
+      url: "./mockServiceWorker.js",
+    },
   });
 }
 
@@ -68,7 +76,7 @@ enableMocking().then(() => {
           >
             <ColorModeIconDropdown />
           </Box>
-          <BrowserRouter>
+          <BrowserRouter basename={basename}>
             <Routes>
               <Route path="/" element={<App />}>
                 <Route index element={<Analytics />} />

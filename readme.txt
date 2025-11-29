@@ -25,7 +25,9 @@ Todos::
 22. When the application is published then the products and orders data is not served.
 23. Change the sire icon to the alsacom icon
 24. I get an overlay with an error of type "Cannot read properties of undefined (reading 'url')" on the logon screen when first starting the server (npm run start).
-
+25. I am getting this error during deploy when done in VS Code. I had to do it from the command prompt instead.
+    Error: Failed to get remote.origin.url (task must either be run in a git repository with a configured origin remote or must be configured with the "repo" option).
+26. Cleanup code. I am getting a lot of warnings for unused imports or variables
 
 For some reason I need this in the package.json otherwise I get page not found on github.io
   "homepage": "https://juchertb.github.io/ReactMaterialUIShowcase",

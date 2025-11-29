@@ -1,5 +1,5 @@
 {
-  "name": "materialui",
+  "name": "reactmaterialuishowcase",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -48,8 +48,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:prod": "cross-env PUBLIC_URL=https://juchertb.github.io/ReactMaterialUIShowcase react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build:prod",
+    "deploy": "gh-pages -d build -r https://github.com/juchertb/ReactMaterialUIShowcase.git"
   },
   "eslintConfig": {
     "extends": [
@@ -76,6 +79,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.6.0",
-    "fakerest": "^4.1.2"
+    "cross-env": "^7.0.3",
+    "fakerest": "^4.1.2",
+    "gh-pages": "^6.3.0"
   }
 }
