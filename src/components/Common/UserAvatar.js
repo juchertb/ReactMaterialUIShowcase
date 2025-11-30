@@ -42,6 +42,8 @@ const UserAvatar = (props) => {
         setAuthenticated(false);
         navigate("/Authentication");
         break;
+      default:
+        break;
     }
   }
 

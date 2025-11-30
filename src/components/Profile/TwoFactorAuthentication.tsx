@@ -1,7 +1,6 @@
 import { Button, Chip, Grid2, Paper, styled, Typography } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
 import FormDivider from "../Common/StyledComponents/FormDivider";
-import { useTheme } from '@mui/material/styles';
 
 const FormGrid = styled(Grid2)(() => ({
   display: 'flex',
@@ -14,14 +13,11 @@ type UserPassword = {
 }
 
 const TwoFactorAuthentication = (props) => {
-  const theme = useTheme();
   const [userPassword, setUserPassword] = useState<UserPassword>({ userId: 123, password: "" });
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    let data = userPassword;
-
-    console.log(data);
+    //console.log(data);
     return;
 
     // fetch("https://pointy-gauge.glitch.me/api/form", {
@@ -37,7 +33,6 @@ const TwoFactorAuthentication = (props) => {
   };
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
     const newValue = event.target.value;
     setUserPassword({ ...userPassword, password: newValue });
   };

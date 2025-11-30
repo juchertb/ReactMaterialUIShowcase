@@ -2,10 +2,6 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import React from "react";
 
 function ConfirmationDialog({ open, confirmDelete, cancelDelete, setOpen, message }: any) {
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };

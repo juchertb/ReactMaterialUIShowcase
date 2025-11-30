@@ -2,8 +2,6 @@ import { faker } from "@faker-js/faker/locale/en";
 import { uuidNoDashes } from "./utils";
 
 export default (db) => {
-  let id = 0;
-
   return (
     db.commands
       //.filter((command) => command.status !== "delivered")

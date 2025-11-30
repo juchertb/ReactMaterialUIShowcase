@@ -1,20 +1,19 @@
 import axios from "axios";
 import React from "react";
 import { apiHost } from "../../Utils/customFetch";
-import { Alert, Avatar, Box, Button, Chip, FormControlLabel, FormLabel, Grid2, MenuItem, OutlinedInput, Paper, Select, SelectChangeEvent, Snackbar, SnackbarCloseReason, Switch, Typography } from "@mui/material";
+import { Alert, Avatar, Box, Button, Chip, FormControlLabel, FormLabel, Grid2, MenuItem, OutlinedInput, Paper, Select, SelectChangeEvent, SnackbarCloseReason, Switch, Typography } from "@mui/material";
 import { useLocation } from "react-router";
 import FormGrid from "../Common/StyledComponents/FormGrid";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import SaveIcon from '@mui/icons-material/Save';
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimeValidationError } from "@mui/x-date-pickers/models";
 import { Customer } from "../../Utils/Types";
 import SnackbarCustomized from "../Common/BasicSnackbar/SnackbarCustomized";
 
 const OrderDetails = (props) => {
-  const [value, setValue] = React.useState(0);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
   const [customer, setCustomer] = React.useState<Customer>(null);
@@ -77,9 +76,6 @@ const OrderDetails = (props) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-
-    let data = { customer };
-    //console.log(data);
 
     axios({
       url: `${apiHost}/customers/${customer.id}`,

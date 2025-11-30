@@ -3,7 +3,7 @@ import React, { InvalidEvent, useState } from "react";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { DateTimeValidationError } from "@mui/x-date-pickers/models";
 import { Theme, useTheme } from "@mui/material/styles";
 import SaveIcon from '@mui/icons-material/Save';
@@ -134,7 +134,7 @@ const UserBasicInfo = (props) => {
 
         let data = { personInfo };
 
-        console.log(data);
+        //console.log(data);
         return;
 
         fetch("https://pointy-gauge.glitch.me/api/form", {

@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
-import Grid2 from "@mui/material/Grid2";
+import React, { useState } from "react";
 import CommonButton from "../../components/Common/CommonButton";
-import NotificationBell from "../../components/NotificationBell";
-import { Alert, Avatar, Box, IconButton, Typography } from "@mui/material";
-import Header from "../../components/Header/Header";
+import { Alert, Box, IconButton, Typography } from "@mui/material";
 import BasicCard from "../../components/Common/BasicCard";
 import SearchBar from "../../components/Common/SearchBar";
 import RefreshButton from "@mui/icons-material/Refresh";

@@ -82,9 +82,13 @@ Update your package.json scripts : add a predeploy and deploy script. The predep
 
 #### `"scripts": {`
 
-#### `"predeploy": "npm run build",`
+#### `"build": "react-scripts build",`
 
-#### `"deploy": "gh-pages -d build",`
+#### `"build:prod": "cross-env PUBLIC_URL=https://juchertb.github.io/ReactMaterialUIShowcase react-scripts build",`
+
+#### `"predeploy": "npm run build:prod",`
+
+#### `"deploy": "gh-pages -d build -r https://github.com/juchertb/ReactMaterialUIShowcase.git",`
 
 #### `}`
 
@@ -94,6 +98,10 @@ Push the app to the GitHub repository : once again you can use your favorite pac
 #### `npm run deploy`
 
 Check the GitHub repo to make sure the code was pushed to remote : gh-pages should have pushed the code to a branch named gh-pages.
+
+If you get this error during deploy in VS Code or the Command Prompt, then run this statement in Command Prompt to clear the gh cache and try "npm run deploy" again: rmdir /s /q node_modules\.cache\gh-pages.
+
+    Error: Failed to get remote.origin.url (task must either be run in a git repository with a configured origin remote or must be configured with the "repo" option).
 
 ## Configure GitHub Pages
 

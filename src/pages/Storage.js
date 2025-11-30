@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import GridWrapper from "../components/Common/GridWrapper";
 import UserTable from "../components/UserTable";
 import BasicCard from "../components/Common/BasicCard";
@@ -8,12 +8,7 @@ import useAuthentication from "../hooks/useAuthentication";
 
 const Storage = (props) => {
   const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = useState(true);
   const { isAuthenticated } = useAuthentication();
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {

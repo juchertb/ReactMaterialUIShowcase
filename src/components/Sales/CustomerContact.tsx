@@ -14,7 +14,6 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SnackbarCustomized from "../Common/BasicSnackbar/SnackbarCustomized";
 
 const CustomerContact = (props) => {
-  const [value, setValue] = React.useState(0);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
   const [customer, setCustomer] = React.useState<Customer>(null);
@@ -54,9 +53,6 @@ const CustomerContact = (props) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-
-    let data = { customer };
-    //console.log(data);
 
     axios({
       url: `${apiHost}/customers/${customer.id}`,

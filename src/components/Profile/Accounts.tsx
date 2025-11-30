@@ -1,21 +1,14 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Chip, Divider, FormControlLabel, FormLabel, Grid2, OutlinedInput, Paper, styled, Switch, Tooltip, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, FormControlLabel, FormLabel, Grid2, OutlinedInput, Paper, styled, Switch, Tooltip, Typography } from "@mui/material";
 import { GridExpandMoreIcon } from "@mui/x-data-grid";
 import React, { ChangeEvent, useState } from "react";
 import FormDivider from "../Common/StyledComponents/FormDivider";
-import { useTheme } from '@mui/material/styles';
 
 const FormGrid = styled(Grid2)(() => ({
   display: 'flex',
   flexDirection: 'column',
 }));
 
-type UserPassword = {
-  userId: number;
-  password: string;
-}
-
 const Accounts = (props) => {
-  const theme = useTheme();
   const [accountsEnabled, setAccountsEnabled] = useState<boolean[]>([true, true, true, false]);
 
   const handleSubmit = evt => {

@@ -1,9 +1,8 @@
 import { Button, FormLabel, Grid2, List, ListItem, ListItemIcon, ListItemText, OutlinedInput, Paper, styled, Typography } from "@mui/material";
-import React, { ChangeEvent, use, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import SaveIcon from '@mui/icons-material/Save';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import { useTheme } from '@mui/material/styles';
 
 const FormGrid = styled(Grid2)(() => ({
   display: 'flex',
@@ -16,7 +15,6 @@ type UserPassword = {
 }
 
 const ChangePassword = (props) => {
-  const theme = useTheme();
   const [userPassword, setUserPassword] = useState<UserPassword>({ userId: 123, password: "" });
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -39,7 +37,6 @@ const ChangePassword = (props) => {
   };
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.name;
     const newValue = event.target.value;
     setUserPassword({ ...userPassword, password: newValue });
   };

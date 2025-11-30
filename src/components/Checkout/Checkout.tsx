@@ -17,7 +17,6 @@ import Info from './Info';
 import InfoMobile from './InfoMobile';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
-import SitemarkIcon from './SitemarkIcon';
 import AppTheme from "../../theme/AppTheme";
 import ColorModeIconDropdown from "../../theme/ColorModelIconDropdown";
 import AlsacomLogo from '../Common/AlsacomLogo';

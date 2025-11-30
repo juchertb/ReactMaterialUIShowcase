@@ -12,7 +12,6 @@ export default (db, { serializeDate }) =>
     const has_ordered = weightedBoolean(25);
     const first_name = faker.person.firstName();
     const last_name = faker.person.lastName();
-    const full_name = first_name + " " + last_name;
     const email = faker.internet.email(first_name, last_name);
     const birthday = has_ordered ? faker.date.past(60) : null;
     return {

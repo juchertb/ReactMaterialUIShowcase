@@ -7,8 +7,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import { useTheme } from '@mui/material/styles';
-
 
 const FormGrid = styled(Grid)(() => ({
   display: 'flex',
@@ -34,7 +32,6 @@ const basicProfileStyles = {
 };
 
 const BasicProfile = (props) => {
-  const theme = useTheme();
   const [accountSwitchState, setAccountSwitchState] = useState({
     emailOnFollow: true,
     emailOnAnswer: false,

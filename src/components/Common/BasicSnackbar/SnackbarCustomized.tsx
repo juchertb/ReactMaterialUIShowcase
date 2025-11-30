@@ -2,7 +2,7 @@ import { Alert, Snackbar, SnackbarCloseReason } from "@mui/material";
 import React from "react";
 
 const SnackbarCustomized = (props: any) => {
-  const hasError: boolean = (props.message.toLowerCase().substr("error") > 0);
+  //const hasError: boolean = (props.message.toLowerCase().substr("error") > 0);
 
   const handleCloseToast = (
     event?: React.SyntheticEvent | Event,

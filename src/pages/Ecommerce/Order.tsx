@@ -1,18 +1,14 @@
 import React from "react";
 import GridWrapper from "../../components/Common/GridWrapper";
-import { Alert, Box, Tab, Tabs, Typography, useTheme } from "@mui/material";
+import { Box, Tab, Tabs, Typography, useTheme } from "@mui/material";
 import PhoneIcon from '@mui/icons-material/Phone';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import ShopIcon from "@mui/icons-material/Shop";
 import ReviewsIcon from '@mui/icons-material/Reviews';
-import axios from "axios";
-import { apiHost } from "../../Utils/customFetch";
 import OrderDetails from "../../components/Sales/OrderDetails";
 import CustomerContact from "../../components/Sales/CustomerContact";
 import OrderHistory from "../../components/Sales/OrderHistory";
 import OrderReviews from "../../components/Sales/OrderReviews";
-
 
 interface TabPanelProps {
   children?: React.ReactNode;

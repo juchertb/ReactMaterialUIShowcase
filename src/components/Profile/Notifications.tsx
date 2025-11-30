@@ -1,6 +1,5 @@
 import { Grid2, Paper, styled, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
-import { useTheme } from "@mui/material/styles";
 
 const FormGrid = styled(Grid2)(() => ({
   display: 'flex',
@@ -14,7 +13,6 @@ type NotificationOptions = {
 }
 
 const Notifications = (props) => {
-  const theme = useTheme();
   const [notificationOptions, setNotificationOptions] = useState<NotificationOptions[]>([
     {
       email: true,

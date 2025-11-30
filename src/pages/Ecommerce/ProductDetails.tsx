@@ -1,14 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { apiHost } from "../../Utils/customFetch";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation } from "react-router";
 import GridWrapper from "../../components/Common/GridWrapper";
-import { Alert, Button, Grid2, Snackbar, SnackbarCloseReason, Typography } from "@mui/material";
+import { Alert, Button, Grid2, Typography } from "@mui/material";
 import FormGrid from "../../components/Common/StyledComponents/FormGrid";
 import ProductDetailsImage from "../../components/Product/ProductDetailsImage";
-import { DateTimeValidationError } from "@mui/x-date-pickers/models";
 import { Product } from "../../Utils/Types";
-import CustomerContact from "../../components/Sales/CustomerContact";
 import ProductDetailsInfo from "../../components/Product/ProductDetailsInfo";
 import SaveIcon from '@mui/icons-material/Save';
 import ProductSocials from "../../components/Product/ProductSocials";
@@ -42,8 +40,6 @@ const ProductDetails = (props) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-
-    let data = { product };
 
     axios({
       url: `${apiHost}/products/${product.id}`,

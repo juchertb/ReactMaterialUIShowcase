@@ -1,8 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { apiHost } from "../../Utils/customFetch";
-import { Alert, alpha, Avatar, Box, Button, FormLabel, Grid2, IconButton, List, ListItem, ListItemAvatar, ListItemText, ListSubheader, MenuItem, OutlinedInput, Paper, Select, SelectChangeEvent, styled, Tooltip, Typography } from "@mui/material";
-import { useLocation, useNavigate } from "react-router";
+import { Alert, Avatar, Box, Button, Grid2, IconButton, List, ListItem, ListItemAvatar, ListItemText, ListSubheader, Paper, Tooltip, Typography } from "@mui/material";
+import { useLocation } from "react-router";
 import FormGrid from "../Common/StyledComponents/FormGrid";
 import { GridRowsProp } from "@mui/x-data-grid";
 import PaymentIcon from '@mui/icons-material/Payment';
@@ -39,8 +39,6 @@ const OrderHistory = (props) => {
         return 3;
     }
   }
-
-  let ordersByYear2;
 
   React.useEffect(() => {
     setError(null);

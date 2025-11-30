@@ -11,7 +11,7 @@ import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import ForgotPassword from "./ForgotPassword";
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from "../CustomIcons";
+import { GoogleIcon, FacebookIcon } from "../CustomIcons";
 import useAuthentication from "../../hooks/useAuthentication";
 import { Modal } from "@mui/material";
 import MuiCard from "@mui/material/Card";

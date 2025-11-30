@@ -5,7 +5,6 @@ import PhoneAndroidOutlinedIcon from '@mui/icons-material/PhoneAndroidOutlined';
 import { Link } from "react-router";
 import FormDivider from "../Common/StyledComponents/FormDivider";
 import ArrowForward from "@mui/icons-material/ArrowForward";
-import { useTheme } from '@mui/material/styles';
 
 const FormGrid = styled(Grid2)(() => ({
   display: 'flex',
@@ -18,7 +17,6 @@ type UserPassword = {
 }
 
 const Sessions = (props) => {
-  const theme = useTheme();
   const [userPassword, setUserPassword] = useState<UserPassword>({ userId: 123, password: "" });
   const handleSubmit = evt => {
     evt.preventDefault();

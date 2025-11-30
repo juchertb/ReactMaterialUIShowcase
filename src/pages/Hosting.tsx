@@ -1,7 +1,6 @@
 import React from "react";
 import SignIn from "../components/SignIn/SignIn";
 import useAuthentication from "../hooks/useAuthentication";
-import { Typography } from "@mui/material";
 import GridWrapper from "../components/Common/GridWrapper";
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import {

@@ -7,8 +7,7 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Avatar, Box, CssBaseline, FormControlLabel, FormLabel, Grid2, List, ListItem, ListItemButton, ListItemIcon, ListItemText, OutlinedInput, Paper, styled, Switch, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Avatar, Box, CssBaseline, FormControlLabel, Grid2, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper, styled, Switch, Typography, useMediaQuery, useTheme } from "@mui/material";
 import GridWrapper from "../../components/Common/GridWrapper";
 import SignIn from "../../components/SignIn/SignIn";
 import useAuthentication from "../../hooks/useAuthentication";
@@ -102,7 +101,6 @@ const styles = (theme) => ({
 
 const Settings = (props) => {
   const { isAuthenticated } = useAuthentication();
-  const navigate = useNavigate();
   const [isInvisible, setIsInvisible] = useState(true);
 
   const handleInvisibleChange = () => {
@@ -110,7 +108,7 @@ const Settings = (props) => {
   }
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("lg"));
+  //const matches = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <GridWrapper>

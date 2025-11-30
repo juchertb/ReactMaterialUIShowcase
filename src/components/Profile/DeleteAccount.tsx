@@ -1,6 +1,5 @@
 import { Button, Grid2, Paper, styled, Typography } from "@mui/material";
 import React from "react";
-import { useTheme } from '@mui/material/styles';
 
 const FormGrid = styled(Grid2)(() => ({
   display: 'flex',
@@ -8,7 +7,6 @@ const FormGrid = styled(Grid2)(() => ({
 }));
 
 const DeleteAccount = (props) => {
-  const theme = useTheme();
   const handleSubmit = evt => {
     evt.preventDefault();
 

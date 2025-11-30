@@ -3,12 +3,7 @@ import useAuthentication from "../../hooks/useAuthentication";
 import GridWrapper from "../../components/Common/GridWrapper";
 import { Box, CardMedia, Grid2, Paper } from "@mui/material";
 import FormGrid from "../../components/Common/StyledComponents/FormGrid";
-import SummaryPanel from "../../components/Sales/SummaryPanel";
-import Channels from "../../components/Sales/Channels";
-import RevenueLineChart from "../../components/Sales/RevenueLineChart";
-import SalesByAgeBarChart from "../../components/Sales/SalesByAgeBarChart";
 import SalesByCountry from "../../components/Sales/SalesByCountry";
-import TopSellingProducts from "../../components/Sales/TopSellingProducts";
 import SignIn from "../../components/SignIn/SignIn";
 import WebSiteViews from "../../components/Analytics/WebSiteViews";
 import DailySales from "../../components/Analytics/DailySales";
@@ -93,7 +88,7 @@ import RentalProperty from "../../components/Analytics/RentalProperty";
 //   SD: 65.93,
 // };
 
-type RentalProperty = {
+type RentalPropertyItem = {
   title: string;
   price: number;
   location: string;
@@ -101,7 +96,7 @@ type RentalProperty = {
   description: string;
 }
 
-const rentalProperties: RentalProperty[] = [
+const rentalProperties: RentalPropertyItem[] = [
   {
     title: "Cozy 5 Stars Apartment",
     price: 899,

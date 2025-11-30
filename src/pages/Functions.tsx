@@ -1,23 +1,16 @@
 import useAuthentication from "../hooks/useAuthentication";
-//import FullFeaturedCrudGrid from "../../components/Grids/FullFeaturedCrudGrid";
 import GridWrapper from "../components/Common/GridWrapper";
 import SignIn from "../components/SignIn/SignIn";
 import { DataGrid, gridClasses, GridToolbar } from "@mui/x-data-grid";
 import {
-  GridDemoData,
   useDemoData,
-  UseDemoDataOptions,
-  getInitialState,
-  getCommodityColumns,
 } from "@mui/x-data-grid-generator";
 import { alpha, styled } from "@mui/material/styles";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
-  AddPathToDemoDataOptions,
   DemoTreeDataValue,
 } from "@mui/x-data-grid-generator/services/tree-data-generator";
-import { GridColDefGenerator } from "@mui/x-data-grid-generator/services/gridColDefGenerator";
-import { Alert, Box, CircularProgress, Typography } from "@mui/material";
+import { Alert, Typography } from "@mui/material";
 
 const ODD_OPACITY = 0.2;
 
@@ -57,8 +50,6 @@ const StripedDataGrid = styled(DataGrid)(({ theme }) => ({
 
 const Functions = (props) => {
   const { isAuthenticated } = useAuthentication();
-  const [data, setData] = useState<DemoTreeDataValue>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { data: data2, loading: loading2 } = useDemoData({
     dataSet: "Commodity",

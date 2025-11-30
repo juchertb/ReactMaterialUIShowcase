@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import GridWrapper from "../../components/Common/GridWrapper";
 import SignIn from "../../components/SignIn/SignIn";
 import useAuthentication from "../../hooks/useAuthentication";
 import FormGrid from "../../components/Common/StyledComponents/FormGrid";
-import { Box, Button, Grid2, Menu, MenuItem, Paper, Typography } from "@mui/material";
+import { Grid2, Paper } from "@mui/material";
 import SummaryPanel from "../../components/Sales/SummaryPanel";
 import Channels from "../../components/Sales/Channels";
 import RevenueLineChart from "../../components/Sales/RevenueLineChart";
@@ -11,11 +11,8 @@ import SalesByAgeBarChart from "../../components/Sales/SalesByAgeBarChart";
 import SalesByCountry from "../../components/Sales/SalesByCountry";
 import TopSellingProducts from "../../components/Sales/TopSellingProducts";
 
-
 const Sales = (props) => {
   const { isAuthenticated } = useAuthentication();
-
-
 
   return (
     <>

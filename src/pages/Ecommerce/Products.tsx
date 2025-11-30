@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useAuthentication from "../../hooks/useAuthentication";
 import GridWrapper from "../../components/Common/GridWrapper";
-import { Alert, Box, Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid2, Pagination, Snackbar, SnackbarCloseReason, Typography } from "@mui/material";
+import { Alert, Grid2, Pagination, Typography } from "@mui/material";
 import FormGrid from "../../components/Common/StyledComponents/FormGrid";
 import SignIn from "../../components/SignIn/SignIn";
 import axios from 'axios';
 import { apiHost } from "../../Utils/customFetch";
-import { GridRowId, GridRowsProp } from "@mui/x-data-grid";
+import { GridRowsProp } from "@mui/x-data-grid";
 import ProductItem from "../../components/Product/ProductItem";
 import { useNavigate } from 'react-router';
 import SnackbarCustomized from "../../components/Common/BasicSnackbar/SnackbarCustomized";
