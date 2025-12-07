@@ -16,6 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import AuthenticationContext from "../../context/Authentication";
 import { useLayout } from "../../context/LayoutContext";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const MenuListItem = styled(List)(() => ({
   justifyContent: "flex-start",
@@ -58,6 +59,7 @@ const MenuListItemButton = styled(ListItemButton)(() => ({
 }));
 
 const Navbar = ({ initialOpen = true }) => {
+  const isSmallScreen = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
   const { openMenu, setOpenMenu, drawerWidth, openWidth, closedWidth } =
     useLayout();
@@ -88,6 +90,16 @@ const Navbar = ({ initialOpen = true }) => {
     event?.stopPropagation();
     navigate(route);
   };
+
+  // Use useEffect to watch for screen size changes
+  React.useEffect(() => {
+    // The effect runs every time 'isSmallScreen' changes its boolean value
+    if (!isSmallScreen) {
+      setOpenMenu(false);
+    } else {
+      setOpenMenu(true);
+    }
+  }, [isSmallScreen]); // Dependency array ensures this runs only when the vaue chnages
 
   return (
     <Drawer
@@ -137,26 +149,28 @@ const Navbar = ({ initialOpen = true }) => {
             &nbsp;
           </Box>
         )}
-        <Tooltip
-          title={
-            openMenu ? "Collapse navigation menu" : "Expand navigation menu"
-          }
-          placement="right"
-          arrow
-        >
-          <IconButton
-            variant="outlined"
-            sx={{
-              key: "menu-toggle-button",
-              border: "none !important",
-              backgroundColor: "transparent !important",
-              color: "white !important",
-            }}
-            onClick={() => setOpenMenu((s) => !s)}
+        {isSmallScreen && (
+          <Tooltip
+            title={
+              openMenu ? "Collapse navigation menu" : "Expand navigation menu"
+            }
+            placement="right"
+            arrow
           >
-            {openMenu ? <MenuIcon /> : <MenuOpenIcon />}
-          </IconButton>
-        </Tooltip>
+            <IconButton
+              variant="outlined"
+              sx={{
+                key: "menu-toggle-button",
+                border: "none !important",
+                backgroundColor: "transparent !important",
+                color: "white !important",
+              }}
+              onClick={() => setOpenMenu((s) => !s)}
+            >
+              {openMenu ? <MenuIcon /> : <MenuOpenIcon />}
+            </IconButton>
+          </Tooltip>
+        )}
       </Box>
 
       <List component="nav">

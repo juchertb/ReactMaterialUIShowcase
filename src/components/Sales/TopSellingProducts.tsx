@@ -52,7 +52,7 @@ const topSellingProductsDataset: TopSellingProduct[] = [
     refundsUp: false
   },
   {
-    name: "Mountain Trip Kit (Camera + Backpack)",
+    name: "Mountain Trip Kit (Camera + Back.)",
     orderCount: 921,
     value: 140925,
     adsSpent: 20531,
@@ -70,10 +70,10 @@ const TopSellingProducts = (props) => {
       <Typography variant="h6" sx={{ fontWeight: "bold" }}>Top </Typography>
       <List sx={{ marginLeft: "0px", paddingLeft: "0px", width: '100%' }}>
         <ListSubheader sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-          <ListItemText sx={{ minWidth: "370px", fontWeight: "bold", color: "gray" }}>PRODUCT</ListItemText>
-          <ListItemText sx={{ fontWeight: "bold", color: "gray" }}>VALUE</ListItemText>
-          <ListItemText sx={{ fontWeight: "bold", color: "gray" }}>ADS SPENT</ListItemText>
-          <ListItemText sx={{ fontWeight: "bold", color: "gray" }}>REFUNDS</ListItemText>
+          <ListItemText sx={{ minWidth: "300px", fontWeight: "bold", color: "gray" }}>PRODUCT</ListItemText>
+          <ListItemText sx={{ display: { xs: "none", sm: "none", md: "block" }, fontWeight: "bold", color: "gray" }}>VALUE</ListItemText>
+          <ListItemText sx={{ display: { xs: "none", sm: "none", md: "block" }, fontWeight: "bold", color: "gray" }}>ADS SPENT</ListItemText>
+          <ListItemText sx={{ display: { xs: "none", sm: "none", md: "none", lg: "block" }, fontWeight: "bold", color: "gray" }}>REFUNDS</ListItemText>
         </ListSubheader>
         {
           topSellingProductsDataset.map((item, index) => (
@@ -90,16 +90,16 @@ const TopSellingProducts = (props) => {
                     </Typography>
                   }
                   slotProps={{
-                    primary: { style: { fontWeight: "bold", minWidth: "300px" } }
+                    primary: { style: { fontWeight: "bold", minWidth: "240px" } }
                   }} />
               </Box>
-              <ListItemText
+              <ListItemText sx={{ display: { xs: "none", sm: "none", md: "block" } }}
                 secondary={"$" + formatter.format(item.value)}
               />
-              <ListItemText
+              <ListItemText sx={{ display: { xs: "none", sm: "none", md: "block" } }}
                 secondary={"$" + formatter.format(item.adsSpent)}
               />
-              <ListItemText>
+              <ListItemText sx={{ display: { xs: "none", sm: "none", md: "none", lg: "block" } }}>
                 <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                   <Typography>{item.refunds}</Typography>
                   {

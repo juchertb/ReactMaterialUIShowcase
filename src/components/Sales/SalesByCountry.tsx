@@ -99,10 +99,11 @@ const SalesByCountry = (props) => {
                 />
               </Box>
               <ListItemText
+                sx={{ width: "30%" }}
                 primary="Country:"
                 secondary={item.countryName}
                 slotProps={{
-                  primary: { style: { fontSize: 10, fontWeight: "bold", width: "100px" } }
+                  primary: { style: { fontSize: 10, fontWeight: "bold" } }
                 }} />
               <ListItemText
                 primary="Sales:"

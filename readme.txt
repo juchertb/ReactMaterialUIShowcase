@@ -17,11 +17,13 @@ Todos::
 14. Implement product details and browser pages from pages/eCommerce/Products
 15. [DONE] when hitting https://localhost:3000 it should bring you to the analytics page or the logon page. Right now a blank page is displayed.
 16. [DONE] Color scheme icon in top right corner moves to the right when I click it. It also disappears when I scroll down on the profile page
-17. FormGrid styled Grid2 is not working under components/StyleComponents. The components disapear in Accounts section for example under the settings page.
+17. [DONE] FormGrid styled Grid2 is not working under components/StyleComponents. The components disapear in Accounts section for example under the settings page.
 18. [DONE] Navigation menu: submenu closes automatically when I click an item.
 19. [DONE] Work on light/dark function.
 20. [DONE] Work on messages (click button at top.). Implement the same way as in the Otis template.
 21. Go through all pages and make them fully responsive
+    - [DONE] Analytics 
+    - [DONE] Sales
 22. [DONE] When the application is published then the products and orders data is not served.
 23. [DONE] Change the site icon to the alsacom icon
 24. [DONE] I get an overlay with an error of type "Cannot read properties of undefined (reading 'url')" on the logon screen when first starting the server (npm run start).
@@ -29,4 +31,5 @@ Todos::
     Error: Failed to get remote.origin.url (task must either be run in a git repository with a configured origin remote or must be configured with the "repo" option).
     Run this in Command Prompt to clear the gh cache and then try "npm run deploy" again: rmdir /s /q node_modules\.cache\gh-pages 
 26. [DONE as much as I could] Cleanup code. I am getting a lot of warnings for unused imports or variables
+27. Implement Billings page from Account\Billing in sample project https://mui.com/store/previews/otis-admin-pro-material-dashboard-react/
 
