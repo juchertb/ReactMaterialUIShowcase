@@ -17,6 +17,7 @@ import AnalyticsIcon from "@mui/icons-material/Analytics";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import ShopIcon from "@mui/icons-material/Shop";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 
 export const mainNavbarItems = [
   {
@@ -149,6 +150,12 @@ export const mainNavbarItems = [
       },
       {
         id: 402,
+        icon: <ReceiptIcon />,
+        label: "Billing",
+        route: "billing",
+      },
+      {
+        id: 403,
         icon: <LogoutIcon />,
         label: "Logout",
         route: "logout",

@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { Outlet } from "react-router";
 import Grid from "@mui/material/Grid2";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer";
 import { useLocation } from "react-router-dom";
 import { AuthenticationProvider } from "./context/Authentication";
 
@@ -25,6 +26,7 @@ function App(props) {
           <Navbar />
           <Header title={title} />
           <Outlet />
+          <Footer />
         </Grid>
       </AuthenticationProvider>
     </>

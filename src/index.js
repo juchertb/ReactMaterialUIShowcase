@@ -11,6 +11,7 @@ import MachineLearning from "./pages/MachineLearning";
 import Storage from "./pages/Storage";
 import Profile from "./pages/Profile/Profile";
 import Settings from "./pages/Profile/Settings";
+import Billing from "./pages/Profile/Billing";
 import Sales from "./pages/Dashboard/Sales";
 import Analytics from "./pages/Dashboard/Analytics";
 import Products from "./pages/Ecommerce/Products";
@@ -88,6 +89,7 @@ enableMocking().then(() => {
                 <Route path="storage" element={<Storage />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="settings" element={<Settings />} />
+                <Route path="billing" element={<Billing />} />
                 <Route path="sales" element={<Sales />} />
                 <Route path="analytics" element={<Analytics />} />
                 <Route path="ecommerce" element={<Products />} />

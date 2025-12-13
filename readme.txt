@@ -32,4 +32,6 @@ Todos::
     Run this in Command Prompt to clear the gh cache and then try "npm run deploy" again: rmdir /s /q node_modules\.cache\gh-pages 
 26. [DONE as much as I could] Cleanup code. I am getting a lot of warnings for unused imports or variables
 27. Implement Billings page from Account\Billing in sample project https://mui.com/store/previews/otis-admin-pro-material-dashboard-react/
+    - Finish footer: needs adjustments on narrow screens. Left part and right links should be layed out vertically
+    - Adjust components on page for narrow screens
 
