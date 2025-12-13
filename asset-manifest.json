@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "https://juchertb.github.io/ReactMaterialUIShowcase/static/css/main.e6c13ad2.css",
-    "main.js": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/main.d7c92156.js",
+    "main.js": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/main.06a59a88.js",
     "static/js/708.08145caa.chunk.js": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/708.08145caa.chunk.js",
     "static/js/453.24bdfd43.chunk.js": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/453.24bdfd43.chunk.js",
     "static/js/631.b0b89c57.chunk.js": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/631.b0b89c57.chunk.js",
     "index.html": "https://juchertb.github.io/ReactMaterialUIShowcase/index.html",
     "main.e6c13ad2.css.map": "https://juchertb.github.io/ReactMaterialUIShowcase/static/css/main.e6c13ad2.css.map",
-    "main.d7c92156.js.map": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/main.d7c92156.js.map",
+    "main.06a59a88.js.map": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/main.06a59a88.js.map",
     "708.08145caa.chunk.js.map": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/708.08145caa.chunk.js.map",
     "453.24bdfd43.chunk.js.map": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/453.24bdfd43.chunk.js.map",
     "631.b0b89c57.chunk.js.map": "https://juchertb.github.io/ReactMaterialUIShowcase/static/js/631.b0b89c57.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.d7c92156.js"
+    "static/js/main.06a59a88.js"
   ]
 }
