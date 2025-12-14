@@ -18,6 +18,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import ShopIcon from "@mui/icons-material/Shop";
 import ReceiptIcon from "@mui/icons-material/Receipt";
+import ScheduleIcon from "@mui/icons-material/Schedule";
 
 export const mainNavbarItems = [
   {
@@ -156,6 +157,12 @@ export const mainNavbarItems = [
       },
       {
         id: 403,
+        icon: <ScheduleIcon />,
+        label: "Scheduler",
+        route: "scheduler",
+      },
+      {
+        id: 404,
         icon: <LogoutIcon />,
         label: "Logout",
         route: "logout",

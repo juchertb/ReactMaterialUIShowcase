@@ -19,6 +19,7 @@ import ProductDetails from "./pages/Ecommerce/ProductDetails";
 import Orders from "./pages/Ecommerce/Orders";
 import Order from "./pages/Ecommerce/Order";
 import AppTheme from "./theme/AppTheme";
+import SchedulerPage from "./pages/Profile/Scheduler";
 import { Box, CssBaseline } from "@mui/material";
 import ColorModeIconDropdown from "./theme/ColorModelIconDropdown";
 import { LayoutProvider } from "./context/LayoutContext";
@@ -92,6 +93,7 @@ enableMocking().then(() => {
                 <Route path="billing" element={<Billing />} />
                 <Route path="sales" element={<Sales />} />
                 <Route path="analytics" element={<Analytics />} />
+                <Route path="scheduler" element={<SchedulerPage />} />
                 <Route path="ecommerce" element={<Products />} />
                 <Route path="ecommerce/products" element={<Products />} />
                 <Route

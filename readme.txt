@@ -34,4 +34,9 @@ Todos::
 27. [DONE] Implement Billings page from Account\Billing in sample project https://mui.com/store/previews/otis-admin-pro-material-dashboard-react/
     - [DONE] Finish footer: needs adjustments on narrow screens. Left part and right links should be layed out vertically
     - [DONE] Adjust components on page for narrow screens
-
+28. Add scheduler. Inspiration: https://devexpress.github.io/devextreme-reactive/react/scheduler/demos/featured/overview/
+    - I used this as the base code for my own scheduler. Initial create with Github Copilot Chat from public repository: https://github.com/rouftom/react-mui-scheduler/blob/main/src/Scheduler.jsx
+    - Add event administration
+    - Move event data to Fakerest MSW handler
+    - [DONE] Make Day, Week and Month views nicer.
+    - [DONE] Scheduler looses chip backround color in Dark mode.
