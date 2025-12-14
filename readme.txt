@@ -36,7 +36,8 @@ Todos::
     - [DONE] Adjust components on page for narrow screens
 28. Add scheduler. Inspiration: https://devexpress.github.io/devextreme-reactive/react/scheduler/demos/featured/overview/
     - I used this as the base code for my own scheduler. Initial create with Github Copilot Chat from public repository: https://github.com/rouftom/react-mui-scheduler/blob/main/src/Scheduler.jsx
-    - Add event administration
-    - Move event data to Fakerest MSW handler
+    - [Next 2] Add event administration
+    - [Next 1] Move event data to Fakerest MSW handler
+    - [DONE] Why was mockServiceWorker.js updated? I haven't committed the file yet. Maybe try a separate commit and publish to gh pages to see if it still works with the new version 
     - [DONE] Make Day, Week and Month views nicer.
     - [DONE] Scheduler looses chip backround color in Dark mode.
