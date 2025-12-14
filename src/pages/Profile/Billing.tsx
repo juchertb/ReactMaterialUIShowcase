@@ -19,7 +19,7 @@ export default function Billing() {
         {isAuthenticated === true ? (
           <>
             <Grid2 container spacing={2} sx={{ minWidth: "400px" }}>
-              <FormGrid size={{ sm: 12, lg: 8 }} >
+              <FormGrid size={{ xs: 12, sm: 12, md: 12, lg: 8 }} >
                 <Grid2 container spacing={2}>
                   <FormGrid size={{ xs: 12, sm: 12, md: 12, lg: 6 }} >
                     <Paper elevation={0} sx={{ backgroundColor: "transparent", borderRadius: "0.75rem", height: "100%", width: "100%", padding: "15px" }}>
@@ -46,13 +46,13 @@ export default function Billing() {
                   </FormGrid>
                 </Grid2>
               </FormGrid>
-              <FormGrid size={{ sx: 12, sm: 12, md: 12, lg: 4 }} >
+              <FormGrid size={{ xs: 12, sm: 12, md: 12, lg: 4 }} >
                 <InvoicesList />
               </FormGrid>
-              <FormGrid size={{ sx: 12, sm: 12, md: 12, lg: 6 }}>
+              <FormGrid size={{ xs: 12, sm: 12, md: 12, lg: 6 }}>
                 <BillingSummary />
               </FormGrid>
-              <FormGrid size={{ sx: 12, sm: 12, md: 12, lg: 6 }}>
+              <FormGrid size={{ xs: 12, sm: 12, md: 12, lg: 6 }}>
                 <Transactions />
               </FormGrid>
             </Grid2>
