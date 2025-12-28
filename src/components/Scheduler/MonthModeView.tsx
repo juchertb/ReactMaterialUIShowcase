@@ -1,15 +1,7 @@
 import React from 'react'
-import { Grid2, Paper, Typography, Box, Chip, useColorScheme, Tooltip } from '@mui/material'
-import { format, startOfMonth, getDaysInMonth, startOfWeek, add, parse } from 'date-fns'
-import { CategoryIconEnum, type SchedulerEvent } from './mockEvents'
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import HotelIcon from '@mui/icons-material/Hotel';
-import RepeatIcon from '@mui/icons-material/Repeat';
-import GroupsIcon from '@mui/icons-material/Groups';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import RateReviewIcon from '@mui/icons-material/RateReview';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { Grid2, Paper, Typography, Box, useColorScheme } from '@mui/material'
+import { format, startOfMonth, getDaysInMonth, startOfWeek, add } from 'date-fns'
+import { SchedulerEventCategoryIconEnum, type SchedulerEvent } from "../../Utils/Types";
 import EventItem from './EventItem';
 
 type Props = {
@@ -62,7 +54,7 @@ export default function MonthModeView({ date, events, onTaskClick }: Props) {
               <Typography variant="caption">{cell.day}</Typography>
               <Box sx={{ mt: 0.5, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
                 {cell.events.map(ev => (
-                  <EventItem key={ev.id} {...ev} />
+                  <EventItem key={ev.id} ev={ev} onTaskClick={onTaskClick} />
                 ))}
               </Box>
             </Grid2>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, List, ListItem, ListItemText, Chip, Typography } from '@mui/material';
-import type { SchedulerEvent } from './mockEvents';
-import { CategoryIconEnum } from './mockEvents';
+import type { SchedulerEvent } from "../../Utils/Types";
+import { SchedulerEventCategoryIconEnum } from "../../Utils/Types";
 import { Timeline, TimelineItem, TimelineConnector, TimelineOppositeContent, TimelineSeparator, TimelineDot, TimelineContent } from '@mui/lab';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
@@ -41,14 +41,14 @@ export default function TimeLineModeView({ date, events, onTaskClick }: Props) {
               <TimelineDot onClick={() => onTaskClick?.(ev)}
                 sx={{ color: { backgroundColor: ev.category.chipColor } }}
               >
-                {ev.category.icon === CategoryIconEnum.Code && <LaptopMacIcon />}
-                {ev.category.icon === CategoryIconEnum.Eat && <FastfoodIcon />}
-                {ev.category.icon === CategoryIconEnum.Sleep && <HotelIcon />}
-                {ev.category.icon === CategoryIconEnum.Repeat && <RepeatIcon />}
-                {ev.category.icon === CategoryIconEnum.Meet && <GroupsIcon />}
-                {ev.category.icon === CategoryIconEnum.Call && <LocalPhoneIcon />}
-                {ev.category.icon === CategoryIconEnum.Review && <RateReviewIcon />}
-                {ev.category.icon === CategoryIconEnum.Onboarding && <PersonAddIcon />}
+                {ev.category.icon === SchedulerEventCategoryIconEnum.Code && <LaptopMacIcon />}
+                {ev.category.icon === SchedulerEventCategoryIconEnum.Eat && <FastfoodIcon />}
+                {ev.category.icon === SchedulerEventCategoryIconEnum.Sleep && <HotelIcon />}
+                {ev.category.icon === SchedulerEventCategoryIconEnum.Repeat && <RepeatIcon />}
+                {ev.category.icon === SchedulerEventCategoryIconEnum.Meet && <GroupsIcon />}
+                {ev.category.icon === SchedulerEventCategoryIconEnum.Call && <LocalPhoneIcon />}
+                {ev.category.icon === SchedulerEventCategoryIconEnum.Review && <RateReviewIcon />}
+                {ev.category.icon === SchedulerEventCategoryIconEnum.Onboarding && <PersonAddIcon />}
               </TimelineDot>
               <TimelineConnector />
             </TimelineSeparator>
@@ -56,7 +56,7 @@ export default function TimeLineModeView({ date, events, onTaskClick }: Props) {
               <Typography variant="h6" component="span">
                 {ev.category.label}
               </Typography>
-              <Typography>{ev.label}</Typography>
+              <Typography>{ev.title}</Typography>
             </TimelineContent>
           </TimelineItem>
         ))}

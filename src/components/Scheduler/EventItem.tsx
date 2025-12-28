@@ -1,7 +1,8 @@
 import { Chip } from "@mui/material";
 import React from "react";
 import { Tooltip } from '@mui/material'
-import { CategoryIconEnum, SchedulerEvent } from "./mockEvents";
+import type { SchedulerEvent } from "../../Utils/Types";
+import { SchedulerEventCategoryIconEnum } from "../../Utils/Types";
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import HotelIcon from '@mui/icons-material/Hotel';
@@ -15,32 +16,29 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
   I wasn't able to pass the click event handler. It
   complains that it is not defined in ev.
 */
-const EventItem = (
-  ev: SchedulerEvent,
-  onTaskClick?: (e: SchedulerEvent) => void
-) => {
+const EventItem = ({ ev, onTaskClick }: { ev: SchedulerEvent; onTaskClick?: (e: SchedulerEvent) => void }) => {
   return (
     <>
-      <Tooltip key={ev.id} title={`${ev.label} (${ev.startHour || 'All day'})`} placement="right">
+      <Tooltip key={ev.id} title={`${ev.title} (${ev.startHour || 'All day'})`} placement="right">
         <Chip
           variant="outlined"
           icon={(() => {
             switch (ev.category.icon) {
-              case CategoryIconEnum.Code:
+              case SchedulerEventCategoryIconEnum.Code:
                 return <LaptopMacIcon sx={{ color: `${ev.category.chipColor} !important` }} />;
-              case CategoryIconEnum.Eat:
+              case SchedulerEventCategoryIconEnum.Eat:
                 return <FastfoodIcon sx={{ color: `${ev.category.chipColor} !important` }} />;
-              case CategoryIconEnum.Sleep:
+              case SchedulerEventCategoryIconEnum.Sleep:
                 return <HotelIcon sx={{ color: `${ev.category.chipColor} !important` }} />;
-              case CategoryIconEnum.Repeat:
+              case SchedulerEventCategoryIconEnum.Repeat:
                 return <RepeatIcon sx={{ color: `${ev.category.chipColor} !important` }} />;
-              case CategoryIconEnum.Meet:
+              case SchedulerEventCategoryIconEnum.Meet:
                 return <GroupsIcon sx={{ color: `${ev.category.chipColor} !important` }} />;
-              case CategoryIconEnum.Call:
+              case SchedulerEventCategoryIconEnum.Call:
                 return <LocalPhoneIcon sx={{ color: `${ev.category.chipColor} !important` }} />;
-              case CategoryIconEnum.Review:
+              case SchedulerEventCategoryIconEnum.Review:
                 return <RateReviewIcon sx={{ color: `${ev.category.chipColor} !important` }} />;
-              case CategoryIconEnum.Onboarding:
+              case SchedulerEventCategoryIconEnum.Onboarding:
                 return <PersonAddIcon sx={{ color: `${ev.category.chipColor} !important` }} />;
               default:
                 return null;
@@ -48,7 +46,7 @@ const EventItem = (
           }
           )()}
           key={ev.id}
-          label={ev.label}
+          label={ev.title}
           size="medium"
           onClick={() => onTaskClick?.(ev)}
           sx={{ borderColor: `${ev.category.chipColor} !important`, justifyContent: 'left' }} />

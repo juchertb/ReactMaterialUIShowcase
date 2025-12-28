@@ -1,17 +1,17 @@
 import { faker } from "@faker-js/faker/locale/en";
 
-export const weightedArrayElement = (values, weights) =>
+export const weightedArrayElement = (values: number[], weights: number[]) =>
   faker.helpers.arrayElement(
     values.reduce(
       (acc, value, index) => acc.concat(new Array(weights[index]).fill(value)),
-      []
+      [] as number[]
     )
   );
 
-export const weightedBoolean = (likelyhood) =>
+export const weightedBoolean = (likelyhood: number) =>
   faker.number.int(99) < likelyhood;
 
-export const randomDate = (minDate = null, maxDate = null) => {
+export const randomDate = (minDate: Date | null = null, maxDate: Date | null = null) => {
   const minTs =
     minDate instanceof Date
       ? minDate.getTime()
@@ -24,8 +24,8 @@ export const randomDate = (minDate = null, maxDate = null) => {
   return new Date(minTs + ts);
 };
 
-export const randomFloat = (min, max) =>
-  parseFloat(faker.number.float({ min, max, precision: 0.01 }).toFixed(2));
+export const randomFloat = (min: number, max: number) =>
+  parseFloat(faker.number.float({ min, max, fractionDigits: 2 }).toFixed(2));
 
 export const uuidNoDashes = () => {
   return faker.string.uuid().replace(/-/g, "");

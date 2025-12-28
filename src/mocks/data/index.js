@@ -9,6 +9,7 @@ import generateReviews from "./reviews";
 import finalize from "./finalize";
 import generateOrders from "./orders";
 import generateCustomerOrders from "./customerOrders";
+import generateSchedulerEvents from "./schedulerEvents";
 
 export default (options = { serializeDate: true }) => {
   const db = {};
@@ -22,7 +23,10 @@ export default (options = { serializeDate: true }) => {
   db.reviews = generateReviews(db, options);
   db.orders = generateOrders(db, options);
   db.customerOrders = generateCustomerOrders(db, options);
+  db.schedulerEvents = generateSchedulerEvents(db, options);
   finalize(db);
+
+  // console.log(db.schedulerEvents);
 
   return db;
 };

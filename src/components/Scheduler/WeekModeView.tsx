@@ -1,15 +1,7 @@
 import React from 'react'
-import { Box, Typography, Chip, Grid2, useColorScheme, Tooltip } from '@mui/material'
+import { Box, Typography, Grid2, useColorScheme, } from '@mui/material'
 import { startOfWeek, add, format, parse } from 'date-fns'
-import { CategoryIconEnum, type SchedulerEvent } from './mockEvents'
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import HotelIcon from '@mui/icons-material/Hotel';
-import RepeatIcon from '@mui/icons-material/Repeat';
-import GroupsIcon from '@mui/icons-material/Groups';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import RateReviewIcon from '@mui/icons-material/RateReview';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { type SchedulerEvent } from "../../Utils/Types";
 import EventItem from './EventItem';
 
 type Props = {
@@ -46,7 +38,7 @@ export default function WeekModeView({ date, events, onTaskClick }: Props) {
             <Grid2 size={{ xs: 1 }} key={d.toString() + h} sx={{ p: 0.5 }}>
               {events.filter(ev => isSameDayString(ev.date, d) && ev.startHour && parse(ev.startHour, 'HH:mm', new Date()).getHours() === h)
                 .map(ev =>
-                  <EventItem key={ev.id} {...ev} />
+                  <EventItem key={ev.id} ev={ev} onTaskClick={onTaskClick} />
                 )
               }
             </Grid2>

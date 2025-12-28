@@ -61,3 +61,53 @@ export enum Gender {
   Male = 1,
   Female = 2
 };
+
+/*
+  Scheduler types
+*/
+export type SchedulerEvent = {
+  id: string
+  date: string // yyyy-MM-dd
+  title: string
+  startHour?: string // HH:mm
+  category: SchedulerEventCategory
+  organizer: string
+  details: string
+  isAllDay: boolean
+  isRepeated: boolean
+  repeatInterval: string
+  repeatEvery: number
+  repeatOnWeekday: number
+  repeatEnd: "never" | "on" | "after"
+  repeatEndOn: number
+  repeatEndAfter: string
+}
+
+export type SchedulerEventCategory = {
+  id: string
+  label: string
+  chipColor: string
+  icon: SchedulerEventCategoryIconEnum
+}
+
+export enum SchedulerEventCategoryIconEnum {
+  Eat = 'FastFood',
+  Code = 'Computer',
+  Sleep = 'Hotel',    
+  Repeat = 'Repeat',
+  Meet = 'Groups',
+  Call = 'LocalPhone',
+  Review = 'RateReview',
+  Onboarding = 'PersonAdd'
+};
+
+export const SchedulerEventCategories: SchedulerEventCategory[] = [
+  { id: '1', label: 'Meeting', chipColor: '#02d3f8ff', icon: SchedulerEventCategoryIconEnum.Meet },
+  { id: '2', label: 'Call', chipColor: '#33f802ff', icon: SchedulerEventCategoryIconEnum.Call },
+  { id: '3', label: 'Review', chipColor: '#f8022bff', icon: SchedulerEventCategoryIconEnum.Review },
+  { id: '4', label: 'Onboarding', chipColor: '#f8c902ff', icon: SchedulerEventCategoryIconEnum.Onboarding },
+  { id: '5', label: 'Eat', chipColor: '#7cb8fdff', icon: SchedulerEventCategoryIconEnum.Eat },
+  { id: '6', label: 'Code', chipColor: '#b3faa1ff', icon: SchedulerEventCategoryIconEnum.Code },
+  { id: '7', label: 'Sleep', chipColor: '#ff96a8ff', icon: SchedulerEventCategoryIconEnum.Sleep },
+  { id: '8', label: 'Repeat', chipColor: '#f3e39dff', icon: SchedulerEventCategoryIconEnum.Repeat }
+]

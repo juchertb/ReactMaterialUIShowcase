@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box, Grid2, Typography, Chip, useColorScheme } from '@mui/material'
-import { format, startOfDay, add, parse } from 'date-fns'
-import type { SchedulerEvent } from './mockEvents'
+import { Box, Grid2, Typography, useColorScheme } from '@mui/material'
+import { parse } from 'date-fns'
+import type { SchedulerEvent } from "../../Utils/Types";
 import EventItem from './EventItem'
 
 type Props = {
@@ -26,7 +26,7 @@ export default function DayModeView({ date, events, onTaskClick }: Props) {
           <Grid2>
             {events.filter(ev => isSameDayString(ev.date, date) && ev.startHour && parse(ev.startHour, 'HH:mm', new Date()).getHours() === h)
               .map(ev =>
-                <EventItem key={ev.id} {...ev} />
+                <EventItem key={ev.id} ev={ev} onTaskClick={onTaskClick} />
               )
             }
           </Grid2>

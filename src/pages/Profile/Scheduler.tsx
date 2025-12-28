@@ -12,7 +12,7 @@ export default function SchedulerPage() {
     <>
       <GridWrapper>
         {isAuthenticated === true ? (
-          <Scheduler events={mockEvents} />
+          <Scheduler />
         ) : (
           <SignIn />
         )}
