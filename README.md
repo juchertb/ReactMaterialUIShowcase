@@ -51,6 +51,10 @@ Using @faker-js to produce random mock data https://fakerjs.dev/guide/usage.html
 <img src="MyProfile.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
 <img src="Settings.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
 <img src="AnalyticsDarkMode.jpeg" width="500px"style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<br>
+<img src="Scheduler.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="SchedulerEvent.jpeg" width="500px" style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
+<img src="SchedulerTimeline.jpeg" width="500px"style="margin-top:10px;margin-bottom:10px;vertical-align: top;">
 
 ## Make the production build
 
