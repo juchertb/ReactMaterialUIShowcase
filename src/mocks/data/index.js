@@ -10,6 +10,8 @@ import finalize from "./finalize";
 import generateOrders from "./orders";
 import generateCustomerOrders from "./customerOrders";
 import generateSchedulerEvents from "./schedulerEvents";
+import generateSettings from "./siteSettings";
+import generateProfile from "./siteProfile";
 
 export default (options = { serializeDate: true }) => {
   const db = {};
@@ -24,9 +26,11 @@ export default (options = { serializeDate: true }) => {
   db.orders = generateOrders(db, options);
   db.customerOrders = generateCustomerOrders(db, options);
   db.schedulerEvents = generateSchedulerEvents(db, options);
+  db.siteSettings = generateSettings(db, options);
+  db.siteProfile = generateProfile(db, options);
   finalize(db);
 
-  // console.log(db.schedulerEvents);
+  //console.log(db.siteSettings);
 
   return db;
 };

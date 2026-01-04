@@ -111,3 +111,58 @@ export const SchedulerEventCategories: SchedulerEventCategory[] = [
   { id: '7', label: 'Sleep', chipColor: '#ff96a8ff', icon: SchedulerEventCategoryIconEnum.Sleep },
   { id: '8', label: 'Repeat', chipColor: '#f3e39dff', icon: SchedulerEventCategoryIconEnum.Repeat }
 ]
+
+export type SiteSettings = {
+  id: number
+  profileInvisibleMode: boolean
+  accountsSlack: boolean
+  accountsSpotify: boolean
+  accountsAtlassian: boolean
+  accountsAsana: boolean 
+  // Notification Mentions
+  notifMentionsEmail: boolean
+  notifMentionsPush: boolean
+  notifMentionsSms: boolean
+  // Notification Comments
+  notifCommentsEmail: boolean
+  notifCommentsPush: boolean
+  notifCommentsSms: boolean
+  // Notification Follows
+  notifFollowsEmail: boolean
+  notifFollowsPush: boolean
+  notifFollowsSms: boolean
+  // Notification Login
+  notifLoginEmail: boolean
+  notifLoginPush: boolean
+  notifLoginSms: boolean
+}
+
+export const allChips: string[] = [
+    "Angular",
+    "jQuery",
+    "Polymer",
+    "React",
+    "Vue.js",
+    "Next.js",
+    "Vite"
+];
+
+export enum Language {
+    None = 0,
+    English = 1,
+    French = 2
+};
+
+export type SiteProfile = {
+  id: number,
+  firstname: string,
+  lastname: string,
+  gender: number,
+  birthDate: Date,
+  email: string,
+  location: string,
+  phone: string,
+  language: number,
+  avatar: string,
+  tags: string[]
+}

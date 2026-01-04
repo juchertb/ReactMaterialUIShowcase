@@ -1,41 +1,30 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, FormControlLabel, FormLabel, Grid2, OutlinedInput, Paper, styled, Switch, Tooltip, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, CircularProgress, FormControlLabel, FormLabel, Grid2, OutlinedInput, Paper, styled, Switch, Tooltip, Typography } from "@mui/material";
 import { GridExpandMoreIcon } from "@mui/x-data-grid";
 import React, { ChangeEvent, useState } from "react";
 import FormDivider from "../Common/StyledComponents/FormDivider";
+import { SiteSettings } from "../../Utils/Types";
 
 const FormGrid = styled(Grid2)(() => ({
   display: 'flex',
   flexDirection: 'column',
 }));
 
-const Accounts = (props) => {
-  const [accountsEnabled, setAccountsEnabled] = useState<boolean[]>([true, true, true, false]);
+type AccountsProps = {
+  notifSettings: SiteSettings;
+  saveStatus: 'idle' | 'saving' | 'success' | 'error';
+  onNotifSettingsChange?: (s: SiteSettings) => void;
+};
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-
-    //let data = userPassword;
-    //console.log(data);
-
-    return;
-
-    // fetch("https://pointy-gauge.glitch.me/api/form", {
-    //     method: "POST",
-    //     body: JSON.stringify(data),
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     }
-    // })
-    //     .then(response => response.json())
-    //     .then(response => console.log("Success:", JSON.stringify(response)))
-    //     .catch(error => console.error("Error:", error));
-  };
+const Accounts = ({ notifSettings, onNotifSettingsChange, saveStatus }: AccountsProps) => {
+  // keep a local copy for optimistic editing
+  const [local, setLocal] = useState<SiteSettings>(null);
+  React.useEffect(() => setLocal(notifSettings ?? null), [notifSettings]);
 
   const handleSwitchChange = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    const rowId = event.target.value;
-    const newAccountsEnabled: boolean[] = { ...accountsEnabled };
-    newAccountsEnabled[rowId] = checked;
-    setAccountsEnabled(newAccountsEnabled);
+    const name = event.target.name;
+    const updated = { ...(local ?? notifSettings), [name]: checked } as SiteSettings;
+    setLocal(updated);
+    onNotifSettingsChange?.(updated)
   };
 
   return (
@@ -46,10 +35,21 @@ const Accounts = (props) => {
       padding: "15px",
       marginTop: "15px"
     }}>
-      <Typography variant="h6">Accounts</Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Typography variant="h6">Accounts</Typography>
+        {saveStatus === 'saving' && (
+          <Box sx={{ display: 'inline-flex', alignItems: 'center', ml: 2 }}>
+            <CircularProgress size={14} />
+            <Typography variant="caption" sx={{ ml: 1 }}>Saving…</Typography>
+          </Box>
+        )}
+        {saveStatus === 'success' && (
+          <Typography variant="caption" sx={{ ml: 2, color: 'success.main' }}>Saved</Typography>
+        )}
+      </Box>
       <Typography>Here you can setup and manage your integration settings.</Typography>
       <div id="accounts" />
-      <form onSubmit={handleSubmit}>
+      <form>
         <Grid2 container spacing={1} sx={{ paddingTop: "15px" }}>
           <FormGrid size={1} sx={{ paddingBottom: "15px" }}>
             <Box
@@ -65,7 +65,7 @@ const Accounts = (props) => {
             <FormControlLabel
               labelPlacement="start"
               control={
-                <Switch checked={accountsEnabled[0]} value="0" name="isSlackEnabled" onChange={handleSwitchChange} />
+                <Switch checked={(local ?? notifSettings)?.accountsSlack ?? false} value="false" name="accountsSlack" onChange={handleSwitchChange} />
               }
               label="Enabled"
             />
@@ -140,7 +140,7 @@ const Accounts = (props) => {
             <FormControlLabel
               labelPlacement="start"
               control={
-                <Switch checked={accountsEnabled[1]} value="1" name="isSpotifyEnabled" onChange={handleSwitchChange} />
+                <Switch checked={(local ?? notifSettings)?.accountsSpotify ?? false} value="false" name="accountsSpotify" onChange={handleSwitchChange} />
               }
               label="Enabled"
             />
@@ -161,7 +161,7 @@ const Accounts = (props) => {
             <FormControlLabel
               labelPlacement="start"
               control={
-                <Switch checked={accountsEnabled[2]} value="2" name="isAtlassianEnabled" onChange={handleSwitchChange} />
+                <Switch checked={(local ?? notifSettings)?.accountsAtlassian ?? false} value="false" name="accountsAtlassian" onChange={handleSwitchChange} />
               }
               label="Enabled"
             />
@@ -182,7 +182,7 @@ const Accounts = (props) => {
             <FormControlLabel
               labelPlacement="start"
               control={
-                <Switch checked={accountsEnabled[3]} value="3" name="isAsanaEnabled" onChange={handleSwitchChange} />
+                <Switch checked={(local ?? notifSettings)?.accountsAsana ?? false} value="false" name="accountsAsana" onChange={handleSwitchChange} />
               }
               label="Enabled"
             />

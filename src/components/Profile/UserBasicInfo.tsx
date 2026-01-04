@@ -7,6 +7,10 @@ import dayjs from "dayjs";
 import { DateTimeValidationError } from "@mui/x-date-pickers/models";
 import { Theme, useTheme } from "@mui/material/styles";
 import SaveIcon from '@mui/icons-material/Save';
+import { SiteProfile, Gender, Language, allChips } from "../../Utils/Types";
+import { apiHost } from "../../Utils/customFetch";
+import axios from "axios";
+import SnackbarCustomized from "../Common/BasicSnackbar/SnackbarCustomized";
 
 
 const FormGrid = styled(Grid2)(() => ({
@@ -14,33 +18,9 @@ const FormGrid = styled(Grid2)(() => ({
     flexDirection: 'column',
 }));
 
-enum Gender {
-    None = 0,
-    Male = 1,
-    Female = 2
-};
-
-enum Language {
-    None = 0,
-    English = 1,
-    French = 2
-};
-
 interface ChipData {
     key: number;
     label: string;
-};
-
-type PersonInfo = {
-    firstname: string;
-    lastname: string;
-    gender: Gender;
-    birthDate: Date;
-    email: string;
-    location?: string;
-    phone: string;
-    language: Language;
-    tags?: ChipData[];
 };
 
 const ITEM_HEIGHT = 48;
@@ -62,23 +42,22 @@ function getStyles(name: string, chipName: readonly string[], theme: Theme) {
     };
 }
 
-const allChips: string[] = [
-    "Angular",
-    "jQuery",
-    "Polymer",
-    "React",
-    "Vue.js",
-    "Next.js",
-    "Vite"
-];
-
 const ChipListItem = styled('li')(({ theme }) => ({
     margin: theme.spacing(0.5),
 }));
 
-const UserBasicInfo = (props) => {
+interface UserBasicInfoProps {
+    profile?: SiteProfile;
+}
+
+const UserBasicInfo = ({ profile }: UserBasicInfoProps) => {
     const theme = useTheme();
-    const [personInfo, setPersonInfo] = useState({
+    const [loading, setLoading] = React.useState(true);
+    const [errorDate, setErrorDate] = React.useState<DateTimeValidationError | null>(null);
+    const [openToast, setOpenToast] = React.useState(false);
+    const [toastMessage, setToastMessage] = React.useState(null);
+    const [personInfo, setPersonInfo] = useState<SiteProfile>(profile ?? {
+        id: 0,
         firstname: "Paul",
         lastname: "Alen",
         gender: Gender.None,
@@ -87,13 +66,12 @@ const UserBasicInfo = (props) => {
         location: "Montréal, Canada",
         phone: "819-555-8888",
         language: Language.English,
-        tags: ["angular", "React", "Next"]
+        tags: ["angular", "React", "Next"],
+        avatar: ""
     });
-
-    const startOfQ11990 = dayjs('1990-01-01T00:00:00.000');
-    const endOfQ11990 = dayjs('1990-03-31T23:59:59.999');
-
-    const [error, setError] = React.useState<DateTimeValidationError | null>(null);
+    const startOfQ11990 = dayjs('1900-01-01T00:00:00.000');
+    const endOfQ11990 = dayjs('2027-03-31T23:59:59.999');
+    const [error, setError] = React.useState(null);
 
     const errorMessage = React.useMemo(() => {
         switch (error) {
@@ -129,39 +107,102 @@ const UserBasicInfo = (props) => {
         });
     };
 
+    // Confirmation email state and helpers
+    // Start blank so the confirmation remains empty unless the user types it
+    const [confirmationEmail, setConfirmationEmail] = React.useState('');
+    const originalEmailRef = React.useRef(personInfo.email ?? '');
+
+    const handleConfirmationChange = (evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setConfirmationEmail(evt.target.value);
+    };
+
+    const handleInvalidConfirmation = (event: InvalidEvent<HTMLInputElement>) => {
+        const value = event.target.value || '';
+        if (value !== personInfo.email) {
+            event.target.setCustomValidity("Confirmation email must match Email");
+        } else {
+            event.target.setCustomValidity("");
+        }
+    };
+
+
     const handleSubmit = evt => {
         evt.preventDefault();
 
-        let data = { personInfo };
-
-        //console.log(data);
-        return;
-
-        fetch("https://pointy-gauge.glitch.me/api/form", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json"
+        // Only require confirmation if the user changed the email from the original
+        console.log("Original email:", originalEmailRef.current);
+        if (personInfo.email !== originalEmailRef.current) {
+            if (confirmationEmail !== personInfo.email) {
+                const el = document.getElementById('confirmation-email') as HTMLInputElement | null;
+                if (el && typeof (el as any).setCustomValidity === 'function') {
+                    (el as any).setCustomValidity('Confirmation email must match Email');
+                    el.reportValidity();
+                    el.focus();
+                }
+                return;
             }
+        }
+
+        let data: SiteProfile = personInfo;
+
+        axios({
+            url: `${apiHost}/siteProfile/${data.id}`,
+            method: "PUT",
+            data: data,
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
         })
-            .then(response => response.json())
-            .then(response => console.log("Success:", JSON.stringify(response)))
-            .catch(error => console.error("Error:", error));
+            .then(response => {
+                if (response.status !== 200 && response.status !== 201) {
+                    throw new Error('Network response was not ok (status: ' + response.status + ')');
+                }
+                return response.data;
+            })
+            .then(() => {
+                setToastMessage(`Customer ${data.firstname + " " + data.lastname} updated successfully!`);
+            })
+            .catch(error => {
+                //setError(error);
+                setLoading(false);
+                setToastMessage(`Customer ${data.firstname + " " + data.lastname} could not be updated. \n${error}`);
+            })
+            .finally(() => {
+                setOpenToast(true);
+            });
     };
 
-    const handleInput = evt => {
+    const handleInput = (evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const name = evt.target.name;
         const newValue = evt.target.value;
-        setPersonInfo({ ...personInfo, [name]: newValue });
+        if (name === 'email') {
+            setPersonInfo(prev => {
+                const prevEmail = prev.email;
+                // If user didn't edit confirmation (it equals the previous email), keep it in sync
+                if (confirmationEmail === prevEmail) {
+                    setConfirmationEmail(newValue);
+                }
+                return { ...prev, email: newValue };
+            });
+        } else {
+            setPersonInfo({ ...personInfo, [name]: newValue });
+        }
     };
 
     const handleInvalidPhone = (event: InvalidEvent<HTMLInputElement>) => {
-        event.target.setCustomValidity("The phone number must be of format 111-222-3333");
+        const value = event.target.value || '';
+        const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+        if (!phoneRegex.test(value)) {
+            event.target.setCustomValidity("The phone number must be of format 123-456-7890");
+        } else {
+            // Clear any previous custom validity when the value is valid
+            event.target.setCustomValidity("");
+        }
     }
 
-    //const handleInvalidBirthdate = (event: InvalidEvent<HTMLInputElement>) => {
-    //event.target.setCustomValidity("The phone number must be of format +1 111-222-3333");
-    //}
+    // const handleInvalidBirthdate = (event: InvalidEvent<HTMLInputElement>) => {
+    //     event.target.setCustomValidity("The phone number must be of format +1 111-222-3333");
+    // }
 
     return (
         <Paper elevation={3} sx={{
@@ -214,7 +255,7 @@ const UserBasicInfo = (props) => {
                             labelId="gender-label"
                             id="gender"
                             name="gender"
-                            value={personInfo.gender.toString()}
+                            value={(personInfo.gender ?? Gender.None).toString()}
                             label="Gender"
                             onChange={handleGenderChange}
                             size="small"
@@ -244,7 +285,7 @@ const UserBasicInfo = (props) => {
                                     },
                                 }}
                                 minDate={startOfQ11990}
-                                maxDate={endOfQ11990}
+                                //maxDate={endOfQ11990}
                                 views={["year", "month", "day"]}
                                 value={dayjs(personInfo.birthDate)}
                                 onChange={(newValue) => personInfo.birthDate = newValue.toDate()}
@@ -278,8 +319,17 @@ const UserBasicInfo = (props) => {
                             type="email"
                             placeholder="example@email.com"
                             //autoComplete="last name"
-                            required
+                            //required
                             size="small"
+                            value={confirmationEmail}
+                            onChange={handleConfirmationChange}
+                            onInput={(e: React.FormEvent) => {
+                                const target = e.target as HTMLInputElement | null;
+                                if (target && typeof (target as any).setCustomValidity === 'function') {
+                                    (target as any).setCustomValidity("");
+                                }
+                            }}
+                            onInvalid={handleInvalidConfirmation}
                         />
                     </FormGrid>
                     <FormGrid size={{ xs: 12, md: 6 }}>
@@ -314,6 +364,12 @@ const UserBasicInfo = (props) => {
                             size="small"
                             value={personInfo.phone}
                             onChange={handleInput}
+                            onInput={(e: React.FormEvent) => {
+                                const target = e.target as HTMLInputElement | null;
+                                if (target && typeof (target as any).setCustomValidity === 'function') {
+                                    (target as any).setCustomValidity("");
+                                }
+                            }}
                             onInvalid={handleInvalidPhone}
                         />
                     </FormGrid>
@@ -324,7 +380,7 @@ const UserBasicInfo = (props) => {
                         <Select
                             id="language"
                             name="language"
-                            value={personInfo.language.toString()}
+                            value={(personInfo.language ?? Language.None).toString()}
                             label="Language"
                             onChange={handleLanguageChange}
                             size="small"
@@ -378,6 +434,11 @@ const UserBasicInfo = (props) => {
                     </FormGrid>
                 </Grid2>
             </form>
+            <SnackbarCustomized
+                openToast={openToast}
+                setOpenToast={setOpenToast}
+                message={error ? toastMessage + " " + error.message : (toastMessage ? toastMessage : "The operation was successfull!")}
+                severity={error ? "error" : 'success'} />
         </Paper >
     )
 };
