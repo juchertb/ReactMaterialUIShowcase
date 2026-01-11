@@ -141,7 +141,7 @@ const BasicProfile = (props) => {
               <Typography sx={{ color: "gray" }}>CEO / Co-Founder</Typography>
             </Box>
           </FormGrid>
-          <FormGrid size={4}>
+          <FormGrid size={{ xs: 12, sm: 12, md: 6, lg: 4, xl: 4 }}>
             <Box>
               <Typography variant="h5">Platform Settings</Typography>
             </Box>
@@ -186,7 +186,7 @@ const BasicProfile = (props) => {
               />
             </Box>
           </FormGrid>
-          <FormGrid size={4}>
+          <FormGrid size={{ xs: 12, sm: 12, md: 6, lg: 4, xl: 4 }}>
             <Box>
               <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Typography variant="h5">Profile Information</Typography>
                 <Tooltip title="Edit profile" arrow>
@@ -231,7 +231,7 @@ const BasicProfile = (props) => {
               </Box>
             </Box>
           </FormGrid>
-          <FormGrid size={4}>
+          <FormGrid size={{ xs: 12, sm: 12, md: 12, lg: 4, xl: 4 }}>
             <Box>
               <Typography variant="h5">Conversations</Typography>
             </Box>
@@ -258,7 +258,7 @@ const BasicProfile = (props) => {
             </Box>
           </FormGrid>
           <FormGrid size={12}>
-            <List sx={{ display: "flex", flexDirection: "row", marginLeft: "0px", paddingLeft: "0px", width: '100%' }}>
+            <List sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "column", lg: "row", xl: "row" }, marginLeft: "0px", paddingLeft: "0px", width: '100%' }}>
               {
                 projectlist.map((item, index) => (
                   <ListItem key={index} sx={{ justifyContent: "space-between", display: "flex", flexDirection: "column" }}>

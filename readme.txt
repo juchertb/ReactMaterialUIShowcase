@@ -3,7 +3,7 @@ Todos::
 
 1. [DONE] Example with formatting:: @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported. Readme.md file how tos: [https://www.geeksforgeeks.org/what-is-readme-md-file/].
 2. [DONE] Add phone validation. It should already be there with input type phone.
-3. Research how to save individual options on the settings page. Like switch settings. How is this done in React applications?
+3. [DONE] Research how to save individual options on the settings page. Like switch settings. How is this done in React applications?
     - See bottom of the page for saving a series of switches
     - Implement "Settings\Notification" save. Need FakeApi.
 4. [DONE] Work on other portions of the setup page.
@@ -26,6 +26,25 @@ Todos::
 21. Go through all pages and make them fully responsive
     - [DONE] Analytics 
     - [DONE] Sales
+    - [OK] Sign-in
+    - [NO PAGE] Sign update
+    - [NO PAGE] Reset Password
+    - [OK] Users
+    - [OK] Hosting Services
+    - [OK] Storage
+    - [OK] Hosting
+    - [OK] Functions
+    - [OK] Machine Learning
+    - [OK] Products
+    - [DONE] Product details
+    - [DONE] Orders
+    - [DONE] Order Details
+    - [DONE] Scheduler. Menu is not breaking into multiple lines
+    - [DONE] Scheduler details
+    - [OK] Billing
+    - [DONE] Settings
+    - [DONE] My Profile
+
 22. [DONE] When the application is published then the products and orders data is not served.
 23. [DONE] Change the site icon to the alsacom icon
 24. [DONE] I get an overlay with an error of type "Cannot read properties of undefined (reading 'url')" on the logon screen when first starting the server (npm run start).

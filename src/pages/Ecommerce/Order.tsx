@@ -1,6 +1,6 @@
 import React from "react";
 import GridWrapper from "../../components/Common/GridWrapper";
-import { Box, Tab, Tabs, Typography, useTheme } from "@mui/material";
+import { Box, Tab, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
 import PhoneIcon from '@mui/icons-material/Phone';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import ShopIcon from "@mui/icons-material/Shop";
@@ -40,6 +40,8 @@ function TabPanel(props: TabPanelProps) {
 const Order = (props) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
+
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -52,6 +54,7 @@ const Order = (props) => {
         onChange={handleChange}
         aria-label="icon label tabs example"
         sx={{ borderRadius: 'lg', boxShadow: 'sm', overflow: 'auto' }}
+        orientation={isSmall ? "vertical" : "horizontal"}
       >
         <Tab icon={<PersonPinIcon />} label="CUSTOMER" sx={{ minWidth: "25%" }} />
         <Tab icon={<PhoneIcon />} label="CONTACT" sx={{ minWidth: "25%" }} />

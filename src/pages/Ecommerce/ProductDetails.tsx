@@ -96,7 +96,7 @@ const ProductDetails = (props) => {
               Save <SaveIcon sx={{ marginLeft: "5px" }} />
             </Button>
           </FormGrid>
-          <FormGrid size={4} sx={{ border: 1 }}>
+          <FormGrid size={{ xs: 12, sm: 12, md: 4, lg: 4, xl: 4 }} sx={{ border: 1 }}>
             <ProductDetailsImage
               image={product.image}
               id={id}
@@ -105,13 +105,13 @@ const ProductDetails = (props) => {
               onEdit={() => console.log("Edit clicked")}
               onDelete={() => console.log("Delete Clicked")} />
           </FormGrid>
-          <FormGrid size={8} sx={{ border: 1 }}>
+          <FormGrid size={{ xs: 12, sm: 12, md: 8, lg: 8, xl: 8 }} sx={{ border: 1 }}>
             <ProductDetailsInfo product={product} setProduct={setProduct} />
           </FormGrid>
-          <FormGrid size={4} sx={{ border: 1 }}>
+          <FormGrid size={{ xs: 12, sm: 12, md: 4, lg: 4, xl: 4 }} sx={{ border: 1 }}>
             <ProductSocials product={product} setProduct={setProduct} />
           </FormGrid>
-          <FormGrid size={8} sx={{ border: 1, paddingBottom: "160px" }}>
+          <FormGrid size={{ xs: 12, sm: 12, md: 8, lg: 8, xl: 8 }} sx={{ border: 1, paddingBottom: "160px" }}>
             <ProductPricing product={product} setProduct={setProduct} />
           </FormGrid>
         </Grid2 >

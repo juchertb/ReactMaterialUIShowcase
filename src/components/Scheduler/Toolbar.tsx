@@ -16,7 +16,7 @@ type Props = {
 
 export default function SchedulerToolbar({ dateLabel, mode, onPrev, onNext, onToday, onModeChange, onAddClick }: Props) {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, p: 1, marginBottom: "15px" }}>
+    <Box sx={{ display: 'flex', flexDirection: { xs: "column", sm: "column", md: "row" }, alignItems: 'center', gap: 1, p: 1, marginBottom: "15px" }}>
       <Tooltip
         title="Previous" >
         <Button

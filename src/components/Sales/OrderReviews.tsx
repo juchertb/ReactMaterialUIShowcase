@@ -143,14 +143,14 @@ const OrderReviews = (props) => {
       <FormGrid size={{ sx: 6, lg: 12 }} sx={{ border: 1 }}>
         <Paper elevation={3} sx={{ minWidth: "500px", borderRadius: "0.75rem", width: "100%", height: "100%", padding: "15px" }}>
           <List sx={{ marginLeft: "0px", paddingLeft: "0px", width: '100%' }}>
-            <ListSubheader sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <ListSubheader sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "row" }, justifyContent: "space-between" }}>
               <ListItemText sx={{ fontWeight: "bold", color: "gray", textAlign: "center" }}>ORDER</ListItemText>
               <ListItemText sx={{ fontWeight: "bold", color: "gray", textAlign: "center" }}>REVIEW TEXT</ListItemText>
             </ListSubheader>
             {
               (rows.length > 0 ?
                 rows.map((item, index) => (
-                  <ListItem key={index} divider={true} sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "start" }}>
+                  <ListItem key={index} divider={true} sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "row" }, justifyContent: "space-between", alignItems: "start" }}>
                     <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", width: "35%", marginRight: "10px" }}>
                       <ListItemAvatar>
                         <Avatar>{getStatusIcon(item.command.status)}</Avatar>

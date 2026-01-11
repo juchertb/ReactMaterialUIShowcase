@@ -166,10 +166,10 @@ const CustomerContact = (props) => {
             <Typography sx={{ fontWeight: "bold" }}>Social media</Typography>
             <Box sx={{ padding: "10px", borderRadius: "0.75rem" }}>
               <Grid2 container spacing={3}>
-                <FormGrid size={1}>
+                <FormGrid size={{ xs: 12, sm: 12, md: 1 }}>
                   <TwitterIcon sx={{ color: "primary.main", marginLeft: "15px", marginTop: "5px" }} />
                 </FormGrid>
-                <FormGrid size={11}>
+                <FormGrid size={{ xs: 12, sm: 12, md: 11 }}>
                   <OutlinedInput
                     id="twitter_url"
                     name="twitter_url"
@@ -180,10 +180,10 @@ const CustomerContact = (props) => {
                     onChange={handleInput}
                   />
                 </FormGrid>
-                <FormGrid size={1}>
+                <FormGrid size={{ xs: 12, sm: 12, md: 1 }}>
                   <InstagramIcon sx={{ color: "primary.main", marginLeft: "15px", marginTop: "5px" }} />
                 </FormGrid>
-                <FormGrid size={11}>
+                <FormGrid size={{ xs: 12, sm: 12, md: 11 }}>
                   <OutlinedInput
                     id="instagram_url"
                     name="instagram_url"
@@ -194,10 +194,10 @@ const CustomerContact = (props) => {
                     onChange={handleInput}
                   />
                 </FormGrid>
-                <FormGrid size={1}>
+                <FormGrid size={{ xs: 12, sm: 12, md: 1 }}>
                   <FacebookIcon sx={{ color: "primary.main", marginLeft: "15px", marginTop: "5px" }} />
                 </FormGrid>
-                <FormGrid size={11}>
+                <FormGrid size={{ xs: 12, sm: 12, md: 11 }}>
                   <OutlinedInput
                     id="facebook_url"
                     name="facebook_url"
@@ -208,10 +208,10 @@ const CustomerContact = (props) => {
                     onChange={handleInput}
                   />
                 </FormGrid>
-                <FormGrid size={1}>
+                <FormGrid size={{ xs: 12, sm: 12, md: 1 }}>
                   <LinkedInIcon sx={{ color: "primary.main", marginLeft: "15px", marginTop: "5px" }} />
                 </FormGrid>
-                <FormGrid size={11}>
+                <FormGrid size={{ xs: 12, sm: 12, md: 11 }}>
                   <OutlinedInput
                     id="linkedin_url"
                     name="linkedin_url"
@@ -225,8 +225,8 @@ const CustomerContact = (props) => {
               </Grid2>
             </Box>
           </FormGrid>
-          <FormGrid size={10} />
-          <FormGrid size={2} sx={{ alignItems: "end" }}>
+          <FormGrid size={{ xs: 8, sm: 8, md: 10 }} />
+          <FormGrid size={{ xs: 4, sm: 4, md: 2 }} sx={{ alignItems: "end" }}>
             <Button
               type="submit"
               variant="outlined"

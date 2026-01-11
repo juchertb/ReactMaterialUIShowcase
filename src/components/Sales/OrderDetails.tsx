@@ -146,7 +146,9 @@ const OrderDetails = (props) => {
               src={customer.avatar}
             />
             <Box>
-              <Typography variant="h3">{customer.first_name + " " + customer.last_name}</Typography>
+              <Typography variant="h3" sx={{
+                fontSize: { xs: '1rem', sm: '1.5rem', md: '2rem' }
+              }}>{customer.first_name + " " + customer.last_name}</Typography>
               <Typography sx={{ color: "gray" }}>{customer.position}</Typography>
             </Box>
           </FormGrid>
@@ -199,7 +201,7 @@ const OrderDetails = (props) => {
               onChange={handleInput}
             />
           </FormGrid>
-          <FormGrid size={4}>
+          <FormGrid size={{ xs: 12, sm: 6, md: 4 }}>
             <FormLabel htmlFor="gender-label" required>
               Gender
             </FormLabel>
@@ -217,7 +219,7 @@ const OrderDetails = (props) => {
               <MenuItem value={"female"}>Female</MenuItem>
             </Select>
           </FormGrid>
-          <FormGrid size={4}>
+          <FormGrid size={{ xs: 12, sm: 6, md: 4 }}>
             <FormLabel htmlFor="bith-date" required>
               Birth Date
             </FormLabel>
@@ -249,7 +251,7 @@ const OrderDetails = (props) => {
               />
             </LocalizationProvider>
           </FormGrid>
-          <FormGrid size={4}>
+          <FormGrid size={{ xs: 12, sm: 6, md: 4 }}>
             <FormLabel htmlFor="date-joined">
               Date joined
             </FormLabel>
@@ -308,7 +310,7 @@ const OrderDetails = (props) => {
               onChange={handleInput}
             />
           </FormGrid>
-          <FormGrid size={2}>
+          <FormGrid size={{ xs: 12, sm: 6, md: 6 }}>
             <FormLabel htmlFor="zipcode" required>
               Zip code
             </FormLabel>
@@ -324,8 +326,8 @@ const OrderDetails = (props) => {
             />
           </FormGrid>
           <FormGrid size={4} />
-          <FormGrid size={10} />
-          <FormGrid size={2} sx={{ alignItems: "end" }}>
+          <FormGrid size={{ xs: 8, sm: 8, md: 10 }} />
+          <FormGrid size={{ xs: 4, sm: 4, md: 2 }} sx={{ alignItems: "end" }}>
             <Button
               type="submit"
               variant="outlined"

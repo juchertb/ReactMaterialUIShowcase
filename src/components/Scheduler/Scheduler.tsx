@@ -356,7 +356,15 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
   //console.log(eventsFromDb);
 
   return (
-    <Paper id="drawer-container" elevation={3} sx={{ borderRadius: "0.75rem", width: "100%", height: "100%", padding: "15px" }} style={{ position: "relative", overflow: "hidden" }}>
+    <Paper id="drawer-container" elevation={3}
+      sx={{
+        borderRadius: "0.75rem",
+        width: "100%",
+        height: "100%",
+        padding: "15px",
+      }}
+    //style={{ position: "relative", overflow: "hidden" }}
+    >
       <DateFnsLocaleContext.Provider value={enUS}>
         <SchedulerToolbar dateLabel={dateLabel} mode={mode} onPrev={onPrev} onNext={onNext} onToday={onToday} onModeChange={setMode} onAddClick={openDetailsDrawer} />
         {mode === 'month' && <MonthModeView date={selectedDate} events={eventsFromDb.data} onTaskClick={handleEventSummaryOpen} />}
@@ -442,6 +450,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
               height: "600px",
               borderRadius: "10px",
               padding: "15px",
+
             }
           },
           backdrop: { style: { position: "absolute" } }

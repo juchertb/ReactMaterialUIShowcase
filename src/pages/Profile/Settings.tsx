@@ -240,20 +240,28 @@ const Settings = (props) => {
       {isAuthenticated === true ? (
         <>
           <AppTheme {...props}>
+            {/*
             <CssBaseline enableColorScheme />
             <Box sx={{ position: 'fixed', top: '1rem', right: '1rem' }}>
               <ColorModeIconDropdown />
             </Box>
+            */}
             <Grid2 container spacing={2} sx={{
               [theme.breakpoints.down("lg")]: {
                 display: "grid",
-              }
+              },
+              minWidth: "400px"
             }}>
-              <FormGrid size={2} sx={{ display: "flex", flexDirection: "row" }}>
+              <FormGrid size={{ xs: 12, sm: 12, md: 12, lg: 2, xl: 2 }} sx={{
+                display: "flex",
+                flexDirection: "row"
+              }}
+              >
                 <Paper elevation={3} sx={{
                   borderRadius: "0.75rem",
                   backgroundColor: theme.palette.background.paper,
-                  color: theme.palette.text.primary
+                  color: theme.palette.text.primary,
+                  width: "100%"
                 }}>
                   <List>
                     {settingsNavbarItems.map((item, index) => (
@@ -270,7 +278,11 @@ const Settings = (props) => {
                   </List>
                 </Paper>
               </FormGrid>
-              <FormGrid size={10} sx={{ marginBottom: "30px", display: "flex", flexDirection: "column" }}>
+              <FormGrid size={{ xs: 12, sm: 12, md: 12, lg: 10, xl: 10 }} sx={{
+                marginBottom: "30px",
+                display: "flex",
+                flexDirection: "column"
+              }}>
                 <div id="profile" />
                 <Paper elevation={3} sx={{
                   borderRadius: "0.75rem",
@@ -287,7 +299,9 @@ const Settings = (props) => {
                       />
                       <Box>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                          <Typography variant="h3">{siteProfile?.firstname} {siteProfile?.lastname}</Typography>
+                          <Typography variant="h3" sx={{
+                            fontSize: { xs: '1.5rem', sm: '1.5rem', md: '1.8rem', lg: '2rem' } // values per breakpoint
+                          }}>{siteProfile?.firstname} {siteProfile?.lastname}</Typography>
                           {saving === 'saving' && (
                             <Box sx={{ display: 'inline-flex', alignItems: 'center', ml: 2 }}>
                               <CircularProgress size={14} />

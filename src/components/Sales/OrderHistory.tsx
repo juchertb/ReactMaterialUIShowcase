@@ -48,32 +48,31 @@ const OrderHistory = (props) => {
         setLoading(false);
 
         // Create the "Number of orders by status" data
+        const statusCounts: { [index: number]: { label: string; value: number } } = {};
         response.data.forEach((order) => {
-          const status: string = order.command?.status;
+          const status: string = (order.command && order.command.status) ? order.command.status : 'other';
           const statusIndex: number = getStatusIndex(status);
-          if (!ordersByStatus[statusIndex]) {
-            ordersByStatus[statusIndex] = { label: status, value: 1 };
-          }
-          else {
-            ordersByStatus[statusIndex].value += 1;
+          if (!statusCounts[statusIndex]) {
+            statusCounts[statusIndex] = { label: status, value: 1 };
+          } else {
+            statusCounts[statusIndex].value += 1;
           }
         });
+        setOrdersByStatus(Object.values(statusCounts));
 
         // Create the "Number of orders by year" data
-        const localArray: {
-          label: string;
-          value: number;
-        }[] = [];
+        const yearMap: { [year: string]: { label: string; value: number } } = {};
         response.data.forEach((order) => {
-          const orderDate: Date = new Date(order.command?.date);
-          if (!localArray[orderDate.getFullYear()]) {
-            localArray[orderDate.getFullYear()] = { label: orderDate.getFullYear().toString(), value: 1 };
-          }
-          else {
-            localArray[orderDate.getFullYear()].value += 1;
+          if (!order.command || !order.command.date) return;
+          const orderDate = new Date(order.command.date);
+          const year = orderDate.getFullYear().toString();
+          if (!yearMap[year]) {
+            yearMap[year] = { label: year, value: 1 };
+          } else {
+            yearMap[year].value += 1;
           }
         });
-        localArray.forEach((orderByYear) => ordersByYear.push(orderByYear));
+        setOrdersByYear(Object.values(yearMap));
       })
       .catch(function (error) {
         setError(error);
@@ -158,17 +157,17 @@ const OrderHistory = (props) => {
 
   return (
     <Grid2 container spacing={2}>
-      <FormGrid size={{ sx: 6, lg: 8 }} sx={{ border: 1 }}>
-        <Paper elevation={3} sx={{ minWidth: "500px", borderRadius: "0.75rem", width: "100%", height: "100%", padding: "15px" }}>
+      <FormGrid size={{ sx: 12, sm: 12, md: 12, lg: 8, xl: 8 }} sx={{ border: 1 }}>
+        <Paper elevation={3} sx={{ minWidth: { xs: '100%', sm: '400px', md: '500px' }, borderRadius: "0.75rem", width: "100%", height: "100%", padding: "15px" }}>
           <List sx={{ marginLeft: "0px", paddingLeft: "0px", width: '100%' }}>
-            <ListSubheader sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <ListSubheader sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "row" }, justifyContent: "space-between" }}>
               <ListItemText sx={{ fontWeight: "bold", color: "gray", textAlign: "center" }}>ORDER</ListItemText>
               <ListItemText sx={{ fontWeight: "bold", color: "gray", textAlign: "center" }}>COST</ListItemText>
             </ListSubheader>
             {
               rows.map((item, index) => (
-                <ListItem key={index} divider={true} sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "start" }}>
-                  <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", width: "50%", marginRight: "10px" }}>
+                <ListItem key={index} divider={true} sx={{ display: "flex", flexDirection: { xs: "column", sm: "column", md: "row" }, justifyContent: "space-between", alignItems: "start", gap: 1 }}>
+                  <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", width: { xs: "100%", sm: "100%" }, marginRight: { xs: 0, sm: "10px" } }}>
                     <ListItemAvatar>
                       <Avatar>{getStatusIcon(item.command?.status)}</Avatar>
                     </ListItemAvatar>
@@ -184,12 +183,10 @@ const OrderHistory = (props) => {
                           </Typography></>
                         </>
                       }
-                      slotProps={{
-                        primary: { style: { fontWeight: "bold", minWidth: "300px" } }
-                      }}>
+                      primaryTypographyProps={{ sx: { fontWeight: 'bold', minWidth: 300 } }}>
                     </ListItemText>
                   </Box>
-                  <ListItemText sx={{ alignContent: "center", textAlign: "right" }}
+                  <ListItemText sx={{ alignContent: "center", textAlign: { xs: "left", sm: "right" }, width: { xs: '100%', sm: '50%' } }}
                   >
                     <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                       <Typography sx={{ fontWeight: "bold" }}>
@@ -230,7 +227,7 @@ const OrderHistory = (props) => {
           </List >
         </Paper >
       </FormGrid >
-      <FormGrid size={{ sm: 4 }}>
+      <FormGrid size={{ sx: 12, sm: 12, md: 6, lg: 4, xl: 4 }}>
         <Paper elevation={3} sx={{ minWidth: "250px", borderRadius: "0.75rem", width: "100%", height: "100%", padding: "15px" }}>
           <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "normal" }}>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>Number of orders by status</Typography>
@@ -278,7 +275,7 @@ const OrderHistory = (props) => {
             </Button>
           </Box>
         </Paper></FormGrid>
-      <FormGrid size={{ sm: 4 }}>
+      <FormGrid size={{ sx: 12, sm: 12, md: 6, lg: 4, xl: 4 }}>
         <Paper elevation={3} sx={{ minWidth: "250px", borderRadius: "0.75rem", width: "100%", height: "100%", padding: "15px" }}>
           <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "normal" }}>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>Number of orders by year</Typography>
@@ -319,7 +316,7 @@ const OrderHistory = (props) => {
                 }
               ]}
           />
-          < Box sx={{ display: "flex", flexDirection: "row", marginTop: "15px", justifyContent: "space-between", alignItems: "normal" }}>
+          <Box sx={{ display: "flex", flexDirection: "row", marginTop: "15px", justifyContent: "space-between", alignItems: "normal" }}>
             <Typography>More than <b>1,200,000</b> sales are made using referral marketing, and <b>700,000</b> are from social media.</Typography>
             <Button
               type="button"
