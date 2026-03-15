@@ -46,7 +46,7 @@ const OrderHistory = (props) => {
       .then(function (response) {
         response.status === 200 ? setRows(response.data) : setError(response.statusText);
         setLoading(false);
-
+        console.log(response.data);
         // Create the "Number of orders by status" data
         const statusCounts: { [index: number]: { label: string; value: number } } = {};
         response.data.forEach((order) => {
@@ -82,6 +82,8 @@ const OrderHistory = (props) => {
         // always executed
       });
   }, []);
+
+
 
   if (loading) return (
     <Typography>Loading...</Typography>

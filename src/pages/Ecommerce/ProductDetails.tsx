@@ -50,7 +50,7 @@ const ProductDetails = (props) => {
       },
     })
       .then(response => {
-        if (response.status !== 200 && response.status !== 201) {
+        if (response.status < 200 || response.status > 299) {
           throw new Error('Network response was not ok (status: ' + response.status + ')');
         }
         return response.data;

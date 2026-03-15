@@ -20,8 +20,10 @@ type Props = {
 
 export default function TimeLineModeView({ date, events, onTaskClick }: Props) {
   function getStartDateTime(ev: SchedulerEvent) {
-    return `${new Date(ev.date).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })} ${ev.startHour}`;
+    return `${new Date(ev.date + "T00:00").toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })} ${ev.startHour}`;
   }
+
+  console.log(events);
 
   return (
     <Box>

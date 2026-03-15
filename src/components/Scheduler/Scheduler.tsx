@@ -108,7 +108,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
 
   function getStartDateTime(ev: SchedulerEvent, includeTime: boolean = true, includeDate: boolean = true) {
     if (!ev) return null;
-    return `${includeDate ? new Date(ev.date).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' }) : ''} ${includeTime ? ev.startHour : ''}`;
+    return `${includeDate ? new Date(ev.date + "T00:00").toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' }) : ''} ${includeTime ? ev.startHour : ''}`;
   }
 
   const dateLabel = useMemo(() => {
@@ -142,11 +142,16 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
           { signal: controller.signal } // Link signal cancellation
         );
         setError(null);
-        return response.data as SchedulerEvent[];
+        return response.data as SchedulerEvent[] ?? [] as SchedulerEvent[];
+        // Test empty resultset
+        //return [] as SchedulerEvent[];
       } catch (err: any) {
         // 3. Check if the error was amaula abort to avoid state updates
         if (!axios.isCancel(err)) {
-          setError(err.message || 'Something went wrong');
+          setError('Could not fetch events. ' + err.message);
+          setToastMessage(`Could not fetch events.`);
+          setOpenToast(true);
+          return [initialEventState] as SchedulerEvent[];
         }
       } finally {
         setLoading(false);
@@ -179,7 +184,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
 
   if (error) return (
     <Alert variant="outlined" severity="error">
-      Error: {error.message}
+      Error: {error}
     </Alert>
   );
 
@@ -207,7 +212,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
     if (clickedEvent !== null) {
       axios.delete(`${apiHost}/schedulerEvents/${clickedEvent.id}`)
         .then(response => {
-          if (response.status !== 200) {
+          if (response.status < 200 || response.status > 299) {
             throw new Error('Network response was not ok (status: ' + response.status + ')');
           }
           return response.data;
@@ -221,7 +226,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
           setToastMessage(`Event ${clickedEvent.id} deleted successfully!`);
         })
         .catch(error => {
-          setError(error);
+          setError(error.message || error.toString());
           setLoading(false);
           setToastMessage(`Could not delete event ${clickedEvent.id}.`);
         })
@@ -266,6 +271,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
   const handleCategoryChange = (event: SelectChangeEvent) => {
     if (event.target.value === "0") return;
     const newEventCategory = SchedulerEventCategories.find(e => e.id === event.target.value);
+    console.log(newEventCategory);
     setClickedEvent({ ...clickedEvent, category: newEventCategory as SchedulerEventCategory });
   }
 
@@ -288,7 +294,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
       },
     })
       .then(response => {
-        if (response.status !== 200 && response.status !== 201) {
+        if (response.status < 200 || response.status > 299) {
           throw new Error('Network response was not ok (status: ' + response.status + ')');
         }
         setClickedEvent(null);
@@ -353,7 +359,9 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
     setClickedEvent(initialEventState);
     toggleDrawer("left", true)({} as React.MouseEvent);
   }
+
   //console.log(eventsFromDb);
+  //console.log("clickedEvent = " + JSON.stringify(clickedEvent));
 
   return (
     <Paper id="drawer-container" elevation={3}
@@ -531,7 +539,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
                     labelId="category-label"
                     id="category"
                     name="category"
-                    value={clickedEvent == null ? "0" : clickedEvent.category.id}
+                    value={clickedEvent == null ? "0" : (SchedulerEventCategories.find(category => category.id === clickedEvent.category.id.toString())?.id.toString() ?? "0")}
                     label="Category"
                     onChange={handleCategoryChange}
                     size="small"
@@ -641,27 +649,28 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
                     <FormLabel htmlFor="repeatInterval">
                       Repeat every
                     </FormLabel>
-                    <NumberField id="repeatEvery" name="repeatEvery" size="small" min={1} max={(() => {
-                      switch (clickedEvent?.repeatInterval.toLowerCase()) {
-                        case "daily":
-                          return 29;
-                          break;
-                        case "weekly":
-                          return 52;
-                          break;
-                        case "monthly":
-                          return 12;
-                          break;
-                        case "yearly":
-                          return 10;
-                          break;
-                        default:
-                          return 1;
-                          break;
-                      }
-                    })()}
+                    <NumberField id="repeatEvery" name="repeatEvery" size="small"
+                      min={1} max={(() => {
+                        switch (clickedEvent?.repeatInterval.toLowerCase()) {
+                          case "daily":
+                            return 29;
+                            break;
+                          case "weekly":
+                            return 52;
+                            break;
+                          case "monthly":
+                            return 12;
+                            break;
+                          case "yearly":
+                            return 10;
+                            break;
+                          default:
+                            return 1;
+                            break;
+                        }
+                      })()}
                       width="125px"
-                      value={clickedEvent?.repeatEvery ?? 1}
+                      value={(clickedEvent?.repeatEvery ?? 1) < 1 ? 1 : clickedEvent?.repeatEvery}
                       onValueChange={(value, event) => handleInputChangeNumeric(value, event, "repeatEvery")}
                       showHelperText={true}
                     />
@@ -774,7 +783,7 @@ export default function Scheduler({ defaultMode = 'month', locale = 'en' }: Prop
       <SnackbarCustomized
         openToast={openToast}
         setOpenToast={setOpenToast}
-        message={error ? toastMessage + " " + error.message : (toastMessage ? toastMessage : "The operation was successfull!")}
+        message={error ? toastMessage + " " + error : (toastMessage ? toastMessage : "The operation was successfull!")}
         severity={error ? "error" : "success"} />
     </Paper >
   )
