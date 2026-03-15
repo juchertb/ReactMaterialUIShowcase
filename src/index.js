@@ -28,6 +28,10 @@ const basename =
   process.env.NODE_ENV === "production" ? "/ReactMaterialUIShowcase" : "/";
 
 async function enableMocking() {
+  // Uncomment to bypass FakeRest and MSW and use real API endpoints instead.
+  // Make sure to update the `apiHost` variable in `src/Utils/customFetch.js` accordingly.
+  return;
+
   // if (process.env.NODE_ENV !== "development") {
   //   return;
   // }
@@ -107,7 +111,7 @@ enableMocking().then(() => {
           </BrowserRouter>
         </LayoutProvider>
       </AppTheme>
-    </>
+    </>,
   );
 
   // If you want to start measuring performance in your app, pass a function
