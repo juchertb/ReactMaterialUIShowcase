@@ -185,7 +185,7 @@ export default function OrdersCrudGrid() {
     if (deleteRowId !== null) {
       axios.delete(`${apiHost}/customerOrders/${deleteRowId}`)
         .then(response => {
-          if (response.status !== 200) {
+          if (response.status < 200 || response.status >= 300) {
             throw new Error('Network response was not ok (status: ' + response.status + ')');
           }
           return response.data;
@@ -239,6 +239,8 @@ export default function OrdersCrudGrid() {
     const urlSuffix = (newRow.isNew ? "" : `/${newRow.customer.id}`);
     const methodName = (newRow.isNew ? "added" : "updated");
 
+    //console.log("customer Id = " + customerId);
+
     axios({
       url: `${apiHost}/customers${urlSuffix}`,
       method: method,
@@ -270,6 +272,7 @@ export default function OrdersCrudGrid() {
     // create the customerOrders record now
     if (newRow.isNew) {
       const updatedRowOrder = { ...newRow, id: newRow.id, customer_id: customer.id, customer: customer, isNew: true };
+      //console.log(updatedRowOrder);
       const urlSuffixOrder = (newRow.isNew ? "" : `/${newRow.id}`);
       updatedRowOrder.isNew = false;
       axios({
@@ -281,7 +284,7 @@ export default function OrdersCrudGrid() {
         },
       })
         .then(response => {
-          if (response.status !== 200 && response.status !== 201) {
+          if (response.status < 200 || response.status >= 300) {
             throw new Error('Network response was not ok (status: ' + response.status + ')');
           }
           return response.data;
@@ -452,7 +455,7 @@ export default function OrdersCrudGrid() {
       editable: true,
       type: 'singleSelect',
       valueOptions: ['Market', 'Finance', 'Development'],
-      valueGetter: (value, row) => row.customer?.role,
+      valueGetter: (value, row) => row.customer?.role || 'Development',
     },
   ];
 
