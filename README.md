@@ -21,6 +21,13 @@ The charts on the Analytics and Sales pages have been developed using the follow
 - <b>Sales page</b>: Material UI Charts (https://mui.com/x/react-charts/).
 - <b>Analytics page</b>: Recharts (https://recharts.org/en-US/).
 
+## Real API
+
+Use the C# controller based Web API located at https://github.com/juchertb/ReactMaterialUIShowcaseApi for the ReactMaterialUIShowcase Single Page React Application. It is built using ASP.NET Core 9.0 and Entity Framework Core 9.0 with a SQL Server database. Or use the FakeRest and Mock Service Worker (MSW). See next section.
+
+> [!IMPORTANT]
+> Either way the URL to the API (ApiHost) needs to be adjusted in src\Utils\customFetch.js and API mocking needs to be disabled in function enableMocking in file index.js when using the real API.
+
 ## API Mocking
 
 Uses FakeRest and Mock Service Worker (MSW). MSW is an API mocking library for browser and Node.js (https://mswjs.io/docs). FakeRest is a browser library that intercepts AJAX calls to mock a REST server based on JSON data. https://github.com/marmelab/FakeRest.

@@ -107,6 +107,8 @@ const UserBasicInfo = ({ profile }: UserBasicInfoProps) => {
         });
     };
 
+    //console.log("Person info:", personInfo);
+
     // Confirmation email state and helpers
     // Start blank so the confirmation remains empty unless the user types it
     const [confirmationEmail, setConfirmationEmail] = React.useState('');
@@ -154,7 +156,7 @@ const UserBasicInfo = ({ profile }: UserBasicInfoProps) => {
             },
         })
             .then(response => {
-                if (response.status !== 200 && response.status !== 201) {
+                if (response.status < 200 || response.status >= 300) {
                     throw new Error('Network response was not ok (status: ' + response.status + ')');
                 }
                 return response.data;
